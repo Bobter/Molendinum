@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Logic
+public class Logic : MonoBehaviour
 {
 
     public int[] Board { get; } = new int[24]; //24 posiciones en el tablero del NMM
