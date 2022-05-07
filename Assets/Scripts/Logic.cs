@@ -12,7 +12,7 @@ public class Logic
     //Definiendo MOLINOS y VECINOS
     private static List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
     public static List<int>[] Neighbour = new List<int>[24];    //Hay 24 vecinos 
-    static Rules() { 
+    void Rules() { 
         //MOLINOS
         for (int i = 0; i <8; i++)
         {
