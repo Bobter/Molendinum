@@ -1,14 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Logic
 {
-
+    /*
     public int[] Board { get; } = new int[24]; //24 posiciones en el tablero del NMM
     public int MeninGame { get; } = new int[2] { 0, 0 }; //Fichas en el tablero(al iniciar el juego son 0 para los 2 jugadores)
     public int Men { get; } = new int[2] { 9, 9 }; //Fichas disponibles para los jugadores
-    
+    */
+
     //Definiendo MOLINOS y VECINOS
     private static List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
     public static List<int>[] Neighbour = new List<int>[24];    //Hay 24 vecinos 
