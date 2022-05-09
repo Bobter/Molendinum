@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Tokens : MonoBehaviour
 {
     Color playerColor;
@@ -10,7 +11,8 @@ public class Tokens : MonoBehaviour
     public int tokenIndex;//indice del la posición de la ficha
     public GameObject SelectionEfect;//efecto que se activará al seleccionar ficha
     public bool isSelected;//está o no está seleccionado la ficha la ficha 
-    public bool isActivate;//está o no está activado la ficha 
+    public bool isActivate;//está o no está activado la ficha 1
+    
     // Start is called before the first frame update
     void Start()
     {
