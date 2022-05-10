@@ -54,7 +54,7 @@ Proyecto en Unity sobre el juego de mesa Nine Men's Morris para el curso de Desa
 
 3. The target starts with the placement of checkers. The game is in two phases. 
 
-**Phase 1
+**Phase 1**
 
 4. To begin, players alternately place one of their checkers on any unoccupied spot on the board. 
 
@@ -72,7 +72,7 @@ Proyecto en Unity sobre el juego de mesa Nine Men's Morris para el curso de Desa
 
 11. Phase 1 ends when the players have placed all 18 tiles on the board. 
 
-**Phase 2
+**Phase 2**
 
 12. After placing all the checkers on board, players begin to move their checkers. During a turn, only one checker has to move (in any possible direction) to an adjacent empty point that is connected to its current point by a line.
 
