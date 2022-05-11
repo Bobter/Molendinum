@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+{}
+=======
+>>>>>>> Stashed changes
 trackSelection = true
 fetchPreview = true
 wantsMore = false
@@ -61,4 +67,9 @@ expandedQueries = [
 queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"
+<<<<<<< Updated upstream
 disabledIndexers = ""
+=======
+disabledIndexers = ""
+>>>>>>> main
+>>>>>>> Stashed changes
