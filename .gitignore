@@ -65,3 +65,6 @@ debug.log
 Assets/New Lighting Settings.lighting
 Assets/_Navimagica/_Scenes/zona_0_Home/LightingData.asset
 Assets/_Navimagica/_Scenes/zona_0_Home/LightingData.asset.meta
+*.dwlt
+*.dwlt
+*.settings
