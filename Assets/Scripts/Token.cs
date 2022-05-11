@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tokens : MonoBehaviour
+public class Token : MonoBehaviour
 {
-    Color playerColor;
+    Color playerColor;//
     //MeshRenderer meshColor;
 
     public int playerIndex;//indice del jugador que usará la ficha
@@ -16,17 +16,11 @@ public class Tokens : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Desactive();
+        DesactiveToken();
         SelectionEfect.SetActive(false);
+        SetTokenOwner();
         isSelected = false;
-        if (playerIndex == 1)
-        {
-            playerColor = Color.black;
-        } else if (playerIndex == 2)
-        {
-            playerColor = Color.white;
-        }
-        gameObject.GetComponent<MeshRenderer>().material.color = playerColor;
+       
     }
     // Update is called once per frame
     void Update()
@@ -37,8 +31,21 @@ public class Tokens : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.F))
         {
-            Desactive();
+            DesactiveToken();
         }
+    }
+
+    private void SetTokenOwner()//asigna el color de la ficha según el indice del jugador al que pertenezca 
+    {
+        if (playerIndex == 1)//si el jugador tiene el indice 1 entonces la ficha es de color negro
+        {
+            playerColor = Color.black;
+        }
+        else if (playerIndex == 2)//si el jugador tiene el indice 2 entonces la ficha es de color blanco
+        {
+            playerColor = Color.white;
+        }
+        gameObject.GetComponent<MeshRenderer>().material.color = playerColor;//se le añade el color a la ficha
     }
     public void Selected()
     {
@@ -55,11 +62,12 @@ public class Tokens : MonoBehaviour
         isActivate = true;
         gameObject.GetComponent<MeshRenderer>().enabled = true;
     }
-    public void Desactive()//estado inical de la ficha 
+    public void DesactiveToken()//estado inical de la ficha 
     {
         isActivate = true;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
+
     private void OnMouseOver()
     {
         SelectionEfect.SetActive(true);
