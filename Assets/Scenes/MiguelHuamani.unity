@@ -159,7 +159,7 @@ MonoBehaviour:
   currentPlayerIndex: 1
   playerIndex: 1
   placeIndex: 0
-  SelectionEfect: {fileID: 568371416}
+  SelectionEffect: {fileID: 568371416}
 --- !u!136 &238969581
 CapsuleCollider:
   m_ObjectHideFlags: 0
