@@ -155,11 +155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6795c1afe7a06904fa007671a97fcdf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unplacedTokens: 9
+  currentPlayerIndex: 1
   playerIndex: 1
-  tokenIndex: 0
+  placeIndex: 0
   SelectionEfect: {fileID: 568371416}
-  isSelected: 0
-  isActivate: 0
 --- !u!136 &238969581
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -258,7 +258,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &568371417
 Transform:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 27f3c7d65c74bff4cbb0184d07c3510d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
