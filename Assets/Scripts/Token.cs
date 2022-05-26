@@ -7,12 +7,12 @@ public class Token : MonoBehaviour
     private Color tokenMeshColor;//guarda el color de la ficha 
     private bool selected;//booleano que indica si la ficha está o no seleccionada
     private GameManager gameManager;//adquiere el gameManager que hay en la escena
-
+    int unplacedTokens;//variables extraida del manager que nos muestra cuantas fichas faltan colocar en el tablero
+    
     //variables públicas
-    public int unplacedTokens;//variables extraida del manager que nos muestra cuantas fichas faltan colocar en el tablero
     public int currentPlayerIndex;//indice del jugador del que es su turno
     public int playerIndex;//indice del jugador que usará la ficha
-    public int placeIndex;//indice del la posición de la ficha
+    public int checkboxIndex;//indice del la posición de la ficha
     public GameObject SelectionEffect;//hace referencia an círculo que es un objeto hijo de la ficha, este círculo sirve par amostrar si la ficha está siendo seleccionada
     public float timeTraslation;//timepo que demorará en moverse de un lado a otro
     // Start is called before the first frame update
@@ -39,7 +39,7 @@ public class Token : MonoBehaviour
     public void SetTokenOwner(int index)//asigna la propiedades iniciales de la ficha y la crea con un color según el indice del jugador al que pertenezca 
     {
         playerIndex = index; 
-        placeIndex = -1;//este -1 significa que aún no está en una casilla
+        checkboxIndex = -1;//este -1 significa que aún no está en una casilla
         if (playerIndex == 0)//si el jugador tiene el indice 0 entonces la ficha es de color negro
         {
             tokenMeshColor = Color.black;//se guarda el color negro
@@ -79,22 +79,33 @@ public class Token : MonoBehaviour
     {
         gameObject.SetActive(active);
     }
+
     public IEnumerator Move(Vector3 newPosition)
     {
         Debug.Log("strat traslation");
         Vector3 startPosition = gameObject.transform.position;
         float currentTime = 0;
         gameManager.TokeIsMoving = true;
+        //GetComponent<Collider>().enabled = false;
         while ((newPosition - gameObject.transform.position).magnitude >= 0.1f)
         {
             currentTime += Time.deltaTime;
             gameObject.transform.position = Vector3.Lerp(startPosition, newPosition, currentTime/timeTraslation);
             yield return null;
         }
-
+        //GetComponent<Collider>().enabled = true;
         gameObject.transform.position = newPosition;
+        gameManager.selectingNothing();
         gameManager.TokeIsMoving = false;
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("box"))
+        {
+            checkboxIndex = other.GetComponent<CheckboxStatus>().checkboxIndex;
+        }
+    }
+
+
 }

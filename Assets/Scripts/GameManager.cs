@@ -6,15 +6,16 @@ public class GameManager : MonoBehaviour
 {
     public int currentPlayerIndex;
     public int maxTokens = 9;
-    public bool twoPlayers=false;
+    public bool twoPlayers=true;
     public float maxDistance;
 
-    public GameObject box;
-    public GameObject SelectedToken;
+    public CheckboxStatus box;
+    public Token SelectedToken;
     public Token TokenPrefab;
     public bool TokeIsMoving=false;
     public int[] placedTokens = { 0, 0 };//contador de las fichas colocadas
 
+    public int []movementIndexs = { -1,-1 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
     public Token[,] arrayToken;
     bool makeMill;//es verdadero si se formó un molino en el turno y es falso cuando no
     int[] totalTokens = { 9, 9 };//contador de la cantidad de fichas activas
@@ -59,42 +60,55 @@ public class GameManager : MonoBehaviour
                     NextTurn();
                 }
             }
-            else
+            else//cuando ya tiene colocada las fichas en el tablero
             {
-                if (hit.transform.CompareTag("token"))
+                if (hit.transform.CompareTag("token"))//si selecciona una ficha
                 {
                     if (hit.transform.GetComponent<Token>().playerIndex == currentPlayerIndex)
                     {
-                        SelectedToken = hit.transform.gameObject;
+                        SelectedToken = hit.transform.GetComponent<Token>();
 
                     }
                     Debug.Log("ficha");
                 }
-                else if (hit.transform.CompareTag("box") && SelectedToken != null)
+                else if (hit.transform.CompareTag("box") && SelectedToken != null)//si selecciona una casilla y seleccionó antes la ficha a mover
                 {
                     Debug.Log("mover a");
-                    box =hit.transform.gameObject;
-
-                    StartCoroutine(SelectedToken.GetComponent<Token>().Move(hit.transform.position));
-                    SelectedToken = null;
-                    box = null;
-                    NextTurn();
+                    box = hit.transform.GetComponent<CheckboxStatus>();
+                    movementIndexs[0] = SelectedToken.checkboxIndex;
+                    movementIndexs[1] = box.checkboxIndex;
+                    bool valid = true;
+                    if (valid)
+                    {
+                        StartCoroutine(SelectedToken.Move(box.transform.position));
+                        NextTurn();
+                    }
+                   
                 }
                 else
                 {
-                    SelectedToken = null;
-                    box = null;
+                    selectingNothing();
                 }
             }
         }
         else
         {
-            SelectedToken = null;
-            box = null;
+            selectingNothing();
         }
 
     }
 
+    public void selectingNothing()
+    {
+        movementIndexs[0]=-1;
+        movementIndexs[1]=-1;
+        SelectedToken = null;
+        box = null;
+    }
+    private void beforeMoveToken()
+    {
+
+    }
     private void spawnTokens()
     {
         arrayToken= new Token[2,maxTokens] ;
