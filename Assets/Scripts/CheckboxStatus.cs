@@ -15,11 +15,5 @@ public class CheckboxStatus : MonoBehaviour
     {
 
     }
-    
-    void setCheckboxStatus()
-    {
-        if (t)
-        checkboxAvailable = true;
-    }
 
 }
