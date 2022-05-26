@@ -5,10 +5,8 @@ using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
-
-
 public class Logic 
-{
+{       
         //Definiendo MOLINOS y VECINOSD
         private static List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
         public static List<int>[] Neighbour = new List<int>[24];    //Hay 24 posiciones
@@ -67,18 +65,29 @@ public class Logic
             }
 
         }
-
-    //Funcion PROVISIONAL/NO LOGICA FINAL
-    bool Mill()
+    
+    //Funcion que comprueba si hay un Molino(3 en raya)
+    bool Mill(int position, Board boardL)
     {
+        var i = boardL.Coordinates[position];
+
         foreach(var p in Molindenum)
         {
-            if (0==0)
+            if (position == p.Item1 || position == p.Item2 || position == p.Item3)
             {
-                return true;
+                if (boardL.Coordinates[p.Item1] == i && boardL.Coordinates[p.Item2] == i && boardL.Coordinates[p.Item2] == i) 
+                {
+                    return true;
+                }
             }
         }
         return false;
-    }    
+    }
+
+    //
+    bool Remove(int BoardPos, Board boardL) 
+    {
+        return !Mill(BoardPos, boardL);
+    }
     
 }
