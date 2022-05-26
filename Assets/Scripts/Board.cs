@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    public GameObject[] Tokens = new GameObject[24];
+    public CheckboxStatus[] Checkbox = new CheckboxStatus[24];
     public Vector3[] Coordinates = new Vector3[24];
 
     void Start()
@@ -14,16 +14,8 @@ public class Board : MonoBehaviour
         for (int i = 0; i < 24; ++i)
         {
             Coordinates[i] = transform.GetChild(i).gameObject.transform.position;
+            Checkbox[i] = transform.GetChild(i).GetComponent<CheckboxStatus>();
+            Checkbox[i].checkboxIndex = i;
         }
-
     }
-
-    //Funcion quitar ficha
-    public void RemoveToken(int position)
-    {
-        var token = Tokens[position];   //
-        Tokens[position] = null;    //Reemplaza sus coordenadas por null
-        Destroy(token); //Se destruye el objeto token en la respectiva posicion
-    }
-
 }
