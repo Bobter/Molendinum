@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
+<<<<<<< Updated upstream
     // Start is called before the first frame update
+=======
+    public GameObject[] Tokens = new GameObject[24];
+    public Vector3[] Coordinates = new Vector3[24];
+    public GameObject ficha;
+
+>>>>>>> Stashed changes
     void Start()
     {
         
