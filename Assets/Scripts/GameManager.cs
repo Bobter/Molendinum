@@ -66,12 +66,15 @@ public class GameManager : MonoBehaviour
                     if (hit.transform.GetComponent<Token>().playerIndex == currentPlayerIndex)
                     {
                         SelectedToken = hit.transform.gameObject;
+
                     }
                     Debug.Log("ficha");
                 }
                 else if (hit.transform.CompareTag("box") && SelectedToken != null)
                 {
                     Debug.Log("mover a");
+                    box =hit.transform.gameObject;
+
                     StartCoroutine(SelectedToken.GetComponent<Token>().Move(hit.transform.position));
                     SelectedToken = null;
                     box = null;
