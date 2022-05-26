@@ -16,9 +16,10 @@ public class Token : MonoBehaviour
     public GameObject SelectionEffect;//hace referencia an círculo que es un objeto hijo de la ficha, este círculo sirve par amostrar si la ficha está siendo seleccionada
     public float timeTraslation;//timepo que demorará en moverse de un lado a otro
     // Start is called before the first frame update
+  
     void Start()
     {
-        SetTokenOwner();
+        SetTokenOwner(playerIndex);
         gameManager = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>();
         currentPlayerIndex = gameManager.currentPlayerIndex;
     }
@@ -31,8 +32,13 @@ public class Token : MonoBehaviour
             Debug.Log(CanMoveToken());
         }*/
     }
-    private void SetTokenOwner()//asigna la propiedades iniciales de la ficha y la crea con un color según el indice del jugador al que pertenezca 
+    int GetCurrentPlayer()
     {
+        return gameManager.currentPlayerIndex;
+    }
+    public void SetTokenOwner(int index)//asigna la propiedades iniciales de la ficha y la crea con un color según el indice del jugador al que pertenezca 
+    {
+        playerIndex = index; 
         placeIndex = -1;//este -1 significa que aún no está en una casilla
         if (playerIndex == 0)//si el jugador tiene el indice 0 entonces la ficha es de color negro
         {
@@ -48,15 +54,18 @@ public class Token : MonoBehaviour
     }
     public bool CanMoveToken()//función que retorna si se puede mover o no la ficha 
     {
-        if (unplacedTokens <= 0 && currentPlayerIndex == playerIndex)
+        if (unplacedTokens <= 0 && GetCurrentPlayer() == playerIndex)
         {
             return true;
         }
         return false;
     }
+   
+
     private void OnMouseOver()
     {
-        if (playerIndex==currentPlayerIndex)
+        Debug.Log("sobre");
+        if (playerIndex==GetCurrentPlayer()&&gameManager.placedTokens[playerIndex]>=gameManager.maxTokens)
         {
             SelectionEffect.SetActive(true);
         }  
@@ -66,6 +75,10 @@ public class Token : MonoBehaviour
         SelectionEffect.SetActive(false);
     }
 
+    public void activeToken(bool active)
+    {
+        gameObject.SetActive(active);
+    }
     public IEnumerator Move(Vector3 newPosition)
     {
         Debug.Log("strat traslation");
