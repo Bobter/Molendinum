@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         
         if (finishMoveToken)
         {
-            makeMill = rules.Mill(movementIndexes[1], board);
+            makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
             finishMoveToken = false;
         }
         else
