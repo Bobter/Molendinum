@@ -34,14 +34,18 @@ public class GameManager : MonoBehaviour
         /*Ray direction = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(direction.origin, direction.direction * maxDistance, Color.cyan);*/
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            SelecObject();
-        }
+        
         if (finishMoveToken)
         {
             makeMill = rules.Mill(movementIndexes[1], board);
             finishMoveToken = false;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                SelecObject();
+            }
         }
         /*
         if (makeMill)
