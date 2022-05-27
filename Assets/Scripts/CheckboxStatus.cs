@@ -24,9 +24,10 @@ public class CheckboxStatus : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == true)
+        if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == true && currentToken == null)
         {
             //tokeIndex captura el indice de la ficha entrante
+            currentToken = other.GetComponent<Token>();
             tokenPlayerIndex = other.gameObject.transform.GetComponent<Token>().playerIndex;
             checkboxAvailable = false;
         }
@@ -34,10 +35,10 @@ public class CheckboxStatus : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == false)
+        if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == false && currentToken.gameObject == other.gameObject)
         {
             tokenPlayerIndex = -1;
-            checkboxAvailable = true;
+            checkboxAvailable = true;   
         }
     }
 }
