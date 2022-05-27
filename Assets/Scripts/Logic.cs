@@ -8,8 +8,32 @@ using UnityEngine;
 public class Logic : MonoBehaviour
 {       
     //Definiendo MOLINOS y VECINOSD
-    private static List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
-    public  List<int>[] Neighbour = new List<int>[24];    //Hay 24 posiciones
+    public List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
+    public int[,] Neighbour = {{1,9,0,0},
+                            {0,2,4,1},
+                            {1,14,2,2},
+                            {4,10,3,3},
+                            {1,3,5,7},
+                            {4,13,5,5},
+                            {7,11,6,6},
+                            {4,6,8,7},
+                            {7,12,8,8},
+                            {0,10,21,9},
+                            {3,9,11,18},
+                            {6,10,15,11},
+                            {8,13,17,12},
+                            {5,12,14,20},
+                            {2,13,23,14},
+                            {11,16,15,15},
+                            {15,17,19,16},
+                            {12,16,17,17},
+                            {10,19,18,18},
+                            {16,18,20,22},
+                            {13,19,20,20},
+                            {9,22,21,21},
+                            {19,21,23, 22},
+                            {14,22,23,23},
+                            };  //Hay 24 posiciones
 
     //Obteniendo posiciones
     public GameManager GM;
@@ -19,7 +43,7 @@ public class Logic : MonoBehaviour
         Rules();
     }
 
-    void Rules()
+    public void Rules()
     {
             //MOLINOS
             for (int i = 0; i < 8; i++)
@@ -36,41 +60,7 @@ public class Logic : MonoBehaviour
             Molindenum.Add(Tuple.Create(1, 4, 7));
             Molindenum.Add(Tuple.Create(16, 19, 22));
 
-            //VECINOS
-            for (int i = 0; i < 8; i++)
-            {
-                //Vecinos hacia la derecha
-                Neighbour[0 + (3 * i)].Add(1 + (3 + i));
-                Neighbour[1 + (3 * i)].Add(2 + (3 + i));
-                //Vecinos hacia la izquierda
-                Neighbour[23 - (3 * i)].Add(22 - (3 + i));
-                Neighbour[22 - (3 * i)].Add(21 - (3 + i));
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                //FALTAN LOS VECINOS CENTRALES SUPERIORES E INFERIORES
-                //Vecinos hacia abajo
-                Neighbour[0 + (3 * i)].Add(9 + i);
-                Neighbour[9 + (i)].Add(21 - (3 * i));
-                Neighbour[8 - (3 * i)].Add(12 + i);
-                Neighbour[12 + i].Add(17 + (3 * i));
-                //Vecinos hacia arriba 
-                Neighbour[11 - i].Add(6 - (3 * i));
-                Neighbour[15 - (3 * i)].Add(11 - i);
-                Neighbour[14 - i].Add(2 + (3 * i));
-                Neighbour[23 - (3 * i)].Add(14 - i);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                //VECINOS CENTRALES SUPERIORES E INFERIORES
-                //Vecinos restantes 
-                //Vecinos hacia abajo
-                Neighbour[1 + (i * 3)].Add(4 + (i * 3));
-                Neighbour[16 + (i * 3)].Add(19 + (i * 3));
-                //Vecinos hacia arriba
-                Neighbour[7 - (i * 3)].Add(4 - (i * 3));
-                Neighbour[22 - (i * 3)].Add(19 - (i * 3));
-            }
+            
             
     }
     
@@ -111,11 +101,10 @@ public class Logic : MonoBehaviour
             return false;
         if (begin < -1 || begin >= boardN.Coordinates.Length)
             return false;
-        if (Neighbour[begin].Contains(end))
+        if (Neighbour[begin,0]==end || Neighbour[begin, 1] == end || Neighbour[begin, 2] == end || Neighbour[begin, 0] == end)
             return true;
         if (GM.availableTokens[CurrentPlayer]==3)
             return true;
-
 
         return false;
     }
