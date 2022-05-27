@@ -12,7 +12,8 @@ public class Logic : MonoBehaviour
     public static List<int>[] Neighbour = new List<int>[24];    //Hay 24 posiciones
 
     //Obteniendo posiciones
-    public CheckboxStatus Bobter;
+    public GameManager GM;
+     
     
     void Rules()
     {
@@ -96,8 +97,10 @@ public class Logic : MonoBehaviour
     }
 
     //Comprueba un movimiento valido
-    public bool ValidMovement(int begin, int end, Board boardN)
+    public bool ValidMovement(int begin, int end, Board boardN, int CurrentPlayer)
     {
+        GM = GameObject.FindObjectOfType<GameManager>();
+
         if (begin == end)
             return false;
         if (end < 0 || end >= boardN.Coordinates.Length)
@@ -106,6 +109,10 @@ public class Logic : MonoBehaviour
             return false;
         if (Neighbour[begin].Contains(end))
             return true;
+        if (GM.availableTokens[CurrentPlayer]==3)
+            return true;
+
+
         return false;
     }
 
