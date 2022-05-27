@@ -74,7 +74,7 @@ public class Logic : MonoBehaviour
         {
             if (position == p.Item1 || position == p.Item2 || position == p.Item3)
             {
-                if (boardN.Checkbox[p.Item1].checkboxIndex == CurrentPlayer && boardN.Checkbox[p.Item2].checkboxIndex == CurrentPlayer && boardN.Checkbox[p.Item2].checkboxIndex == CurrentPlayer) 
+                if (boardN.Checkbox[p.Item1].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[p.Item2].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[p.Item2].tokenPlayerIndex == CurrentPlayer) 
                 {
                     return true;
                 }
