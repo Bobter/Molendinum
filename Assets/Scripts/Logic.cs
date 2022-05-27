@@ -5,14 +5,17 @@ using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
-public class Logic 
+public class Logic : MonoBehaviour
 {       
-        //Definiendo MOLINOS y VECINOSD
-        private static List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
-        public static List<int>[] Neighbour = new List<int>[24];    //Hay 24 posiciones
-        
-        void Rules()
-        {
+    //Definiendo MOLINOS y VECINOSD
+    private static List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
+    public static List<int>[] Neighbour = new List<int>[24];    //Hay 24 posiciones
+
+    //Obteniendo posiciones
+    public CheckboxStatus Bobter;
+    
+    void Rules()
+    {
             //MOLINOS
             for (int i = 0; i < 8; i++)
             {
@@ -64,18 +67,20 @@ public class Logic
                 Neighbour[22 - (i * 3)].Add(19 - (i * 3));
             }
 
-        }
+    }
     
     //Funcion que comprueba si hay un Molino(3 en raya)
-    bool Mill(int position, Board boardL)
+
+    //Entrada checkbox.currentIndex y Board 
+    public bool Mill(int position, Board boardN)
     {
-        var i = boardL.Coordinates[position];
+        var i = boardN.Coordinates[position];
 
         foreach(var p in Molindenum)
         {
             if (position == p.Item1 || position == p.Item2 || position == p.Item3)
             {
-                if (boardL.Coordinates[p.Item1] == i && boardL.Coordinates[p.Item2] == i && boardL.Coordinates[p.Item2] == i) 
+                if (boardN.Coordinates[p.Item1] == i && boardN.Coordinates[p.Item2] == i && boardN.Coordinates[p.Item2] == i) 
                 {
                     return true;
                 }
@@ -84,10 +89,26 @@ public class Logic
         return false;
     }
 
-    //
-    bool Remove(int BoardPos, Board boardL) 
+    //Nos da un booleano que nos dice si una ficha se puede eliminar si es que no forma parte de un molino
+    public bool Remove(int BoardPos, Board boardL) 
     {
         return !Mill(BoardPos, boardL);
     }
+
+    //Comprueba un movimiento valido
+    public bool ValidMovement(int begin, int end, Board boardN)
+    {
+        if (begin == end)
+            return false;
+        if (end < 0 || end >= boardN.Coordinates.Length)
+            return false;
+        if (begin < -1 || begin >= boardN.Coordinates.Length)
+            return false;
+        //if que comprueba que el destino esté vacío
+
+        return true;
+    }
+
+
     
 }
