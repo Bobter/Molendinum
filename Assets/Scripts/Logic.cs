@@ -8,7 +8,7 @@ using UnityEngine;
 public class Logic : MonoBehaviour
 {       
     //Definiendo MOLINOS y VECINOSD
-    public List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
+    public List<int[]> Molendinum = new List<int[]>();
     public int[,] Neighbour = {{1,9,0,0},   //0
                             {0,2,4,1},      //1
                             {1,14,2,2},     //2
@@ -45,23 +45,24 @@ public class Logic : MonoBehaviour
 
     public void Rules()
     {
-            //MOLINOS
-            for (int i = 0; i < 8; i++)
-            {
-                Molindenum.Add(Tuple.Create(0 + (3 * i), 1 + (3 * i), 2 + (3 * i))); //Molinos en horizontal
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                //Molinos en vertical (FALTAN 2)
-                Molindenum.Add(Tuple.Create(0 + (3 * i), 9 + i, 21 - (3 * i)));
-                Molindenum.Add(Tuple.Create(8 - (3 * i), 12 + i, 17 + (3 * i)));
-            }
-            //Molinos en vertical que FALTARON
-            Molindenum.Add(Tuple.Create(1, 4, 7));
-            Molindenum.Add(Tuple.Create(16, 19, 22));
+        //MOLINOS
+        for (int i = 0; i < 8; i++)
+        {
+            Molendinum.Add(new int[] { 0 + (3 * i), 1 + (3 * i), 2 + (3 * i) });
+            //Molinos en horizontal
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            //Molinos en vertical (FALTAN 2)
+            Molendinum.Add(new int[] { 0 + (3 * i), 9 + i, 21 - (3 * i) });
+            Molendinum.Add(new int[] { 8 - (3 * i), 12 + i, 17 + (3 * i) });
+        }
+        //Molinos en vertical que FALTARON
+        Molendinum.Add(new int[] { 1, 4, 7 });
+        Molendinum.Add(new int[] { 16, 19, 22 });
 
-            
-            
+
+
     }
     
     //Funcion que comprueba si hay un Molino(3 en raya)
@@ -70,11 +71,11 @@ public class Logic : MonoBehaviour
     public bool Mill(int position, Board boardN, int CurrentPlayer)
     {
 
-        foreach(var p in Molindenum)
+        for (int i = 0; i < 15; i++)
         {
-            if (position == p.Item1 || position == p.Item2 || position == p.Item3)
+            if (position == Molendinum[i][0] || position == Molendinum[i][1] || position == Molendinum[i][2])
             {
-                if (boardN.Checkbox[p.Item1].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[p.Item2].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[p.Item2].tokenPlayerIndex == CurrentPlayer) 
+                if (boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
                     return true;
                 }
