@@ -66,7 +66,7 @@ public class Logic : MonoBehaviour
                 Neighbour[7 - (i * 3)].Add(4 - (i * 3));
                 Neighbour[22 - (i * 3)].Add(19 - (i * 3));
             }
-
+            
     }
     
     //Funcion que comprueba si hay un Molino(3 en raya)
@@ -104,9 +104,9 @@ public class Logic : MonoBehaviour
             return false;
         if (begin < -1 || begin >= boardN.Coordinates.Length)
             return false;
-
-
-        return true;
+        if (Neighbour[begin].Contains(end))
+            return true;
+        return false;
     }
 
 
