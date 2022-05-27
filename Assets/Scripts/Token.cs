@@ -8,7 +8,8 @@ public class Token : MonoBehaviour
     private bool selected;//booleano que indica si la ficha está o no seleccionada
     private GameManager gameManager;//adquiere el gameManager que hay en la escena
     int unplacedTokens;//variables extraida del manager que nos muestra cuantas fichas faltan colocar en el tablero
-    
+    CheckboxStatus currentCheckbox; 
+
     //variables públicas
     public int currentPlayerIndex;//indice del jugador del que es su turno
     public int playerIndex;//indice del jugador que usará la ficha
@@ -85,7 +86,7 @@ public class Token : MonoBehaviour
         Debug.Log("strat traslation");
         Vector3 startPosition = gameObject.transform.position;
         float currentTime = 0;
-        gameManager.TokeIsMoving = true;
+        
         //GetComponent<Collider>().enabled = false;
         while ((newPosition - gameObject.transform.position).magnitude >= 0.1f)
         {
@@ -96,15 +97,25 @@ public class Token : MonoBehaviour
         //GetComponent<Collider>().enabled = true;
         gameObject.transform.position = newPosition;
         gameManager.selectingNothing();
-        gameManager.TokeIsMoving = false;
+        gameManager.finishMoveToken = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("box"))
         {
-            checkboxIndex = other.GetComponent<CheckboxStatus>().checkboxIndex;
+            currentCheckbox = other.GetComponent<CheckboxStatus>();
+            checkboxIndex = currentCheckbox.checkboxIndex;
         }
+    }
+
+    public void DeleteToken(){
+        currentCheckbox.tokenPlayerIndex = -1;
+        checkboxIndex = -1;
+        currentCheckbox = null;
+        activeToken(false);
+        gameManager.NextTurn();
+        
     }
 
 

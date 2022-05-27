@@ -8,34 +8,47 @@ public class GameManager : MonoBehaviour
     public int maxTokens = 9;
     public bool twoPlayers=true;
     public float maxDistance;
-
     public CheckboxStatus box;
     public Token SelectedToken;
     public Token TokenPrefab;
-    public bool TokeIsMoving=false;
+    public bool finishMoveToken=false;
     public int[] placedTokens = { 0, 0 };//contador de las fichas colocadas
+    public int[] availableTokens = { 9, 9 };//contador de la cantidad de fichas activas
 
-    public int []movementIndexs = { -1,-1 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
+    public int []movementIndexes = { -1,-1 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
     public Token[,] arrayToken;
     bool makeMill;//es verdadero si se formó un molino en el turno y es falso cuando no
-    int[] totalTokens = { 9, 9 };//contador de la cantidad de fichas activas
-
+    Logic rules;
+    Board board;
     // Start is called before the first frame update
     void Start()
     {
+        rules = gameObject.GetComponent<Logic>();
+        board = GameObject.FindObjectOfType<Board>();
         spawnTokens();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Ray direction = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(direction.origin, direction.direction * maxDistance, Color.cyan);
+        /*Ray direction = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(direction.origin, direction.direction * maxDistance, Color.cyan);*/
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             SelecObject();
         }
+        if (finishMoveToken)
+        {
+            makeMill = rules.Mill(movementIndexes[1], board);
+            finishMoveToken = false;
+        }
+        if (makeMill)
+        {
+            deleteToken();
+        }
+        else NextTurn();
+       
     }
 
     public void NextTurn()
@@ -60,6 +73,7 @@ public class GameManager : MonoBehaviour
                     NextTurn();
                 }
             }
+
             else//cuando ya tiene colocada las fichas en el tablero
             {
                 if (hit.transform.CompareTag("token"))//si selecciona una ficha
@@ -75,10 +89,10 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log("mover a");
                     box = hit.transform.GetComponent<CheckboxStatus>();
-                    movementIndexs[0] = SelectedToken.checkboxIndex;
-                    movementIndexs[1] = box.checkboxIndex;
-                    bool valid = true;
-                    if (valid)
+                    movementIndexes[0] = SelectedToken.checkboxIndex;
+                    movementIndexes[1] = box.checkboxIndex;
+                
+                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board))
                     {
                         StartCoroutine(SelectedToken.Move(box.transform.position));
                         NextTurn();
@@ -98,16 +112,31 @@ public class GameManager : MonoBehaviour
 
     }
 
+    void deleteToken()
+    {
+        RaycastHit hit;
+        Ray mouseDirection = Camera.main.ScreenPointToRay(Input.mousePosition);
+        int deleteTokenIndex = (currentPlayerIndex + 1) % 2;
+        if (Physics.Raycast(mouseDirection.origin, mouseDirection.direction, out hit, maxDistance))//si el rayo choca con algo
+        {
+            if (hit.transform.CompareTag("token"))//si selecciona una fichaenemiga
+            {
+                Token deletedToken = hit.transform.GetComponent<Token>();
+                if (deletedToken.playerIndex == deleteTokenIndex)
+                {
+                    deletedToken.DeleteToken();
+                    makeMill = false;
+                    NextTurn();
+                }
+            }
+        }     
+    }
     public void selectingNothing()
     {
-        movementIndexs[0]=-1;
-        movementIndexs[1]=-1;
+        movementIndexes[0]=-1;
+        movementIndexes[1]=-1;
         SelectedToken = null;
         box = null;
-    }
-    private void beforeMoveToken()
-    {
-
     }
     private void spawnTokens()
     {
@@ -116,6 +145,7 @@ public class GameManager : MonoBehaviour
         {
             Token player1 = Instantiate(TokenPrefab, gameObject.transform.position, Quaternion.identity);
             player1.activeToken(false);
+
             if (i < maxTokens) {
                 player1.SetTokenOwner(0);
                 arrayToken[0, i] = player1;
@@ -124,9 +154,7 @@ public class GameManager : MonoBehaviour
             {
                 player1.SetTokenOwner(1);
                 arrayToken[1, i-maxTokens] = player1;
-            }
-                
-            
+            }  
         }
     }
 }
