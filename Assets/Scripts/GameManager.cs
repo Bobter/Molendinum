@@ -43,11 +43,12 @@ public class GameManager : MonoBehaviour
             makeMill = rules.Mill(movementIndexes[1], board);
             finishMoveToken = false;
         }
+        /*
         if (makeMill)
         {
             deleteToken();
         }
-        else NextTurn();
+        else NextTurn();*/
        
     }
 
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
                     movementIndexes[0] = SelectedToken.checkboxIndex;
                     movementIndexes[1] = box.checkboxIndex;
                 
-                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board))
+                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))
                     {
                         StartCoroutine(SelectedToken.Move(box.transform.position));
                         NextTurn();

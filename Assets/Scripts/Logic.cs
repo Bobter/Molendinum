@@ -9,12 +9,16 @@ public class Logic : MonoBehaviour
 {       
     //Definiendo MOLINOS y VECINOSD
     private static List<Tuple<int, int, int>> Molindenum = new List<Tuple<int, int, int>>();
-    public static List<int>[] Neighbour = new List<int>[24];    //Hay 24 posiciones
+    public  List<int>[] Neighbour = new List<int>[24];    //Hay 24 posiciones
 
     //Obteniendo posiciones
     public GameManager GM;
-     
-    
+    void Start()
+    {
+        GM = gameObject.GetComponent<GameManager>();
+        Rules();
+    }
+
     void Rules()
     {
             //MOLINOS
