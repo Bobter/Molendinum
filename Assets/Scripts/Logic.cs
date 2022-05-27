@@ -104,7 +104,7 @@ public class Logic : MonoBehaviour
             return false;
         if (begin < -1 || begin >= boardN.Coordinates.Length)
             return false;
-        //if que comprueba que el destino esté vacío
+
 
         return true;
     }
