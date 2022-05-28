@@ -65,20 +65,17 @@ public class Logic : MonoBehaviour
     //Entrada checkbox.currentIndex y Board 
     public bool Mill(int position, Board boardN, int CurrentPlayer)
     {
-        UnityEngine.Debug.Log("------POSITION-------:"+position);
+        
         for (int i = 0; i < 15; i++)
         {
-            UnityEngine.Debug.Log(i+": "+Molendinum[i][0]);
-            UnityEngine.Debug.Log(i + ": " + Molendinum[i][1]);
-            UnityEngine.Debug.Log(i + ": " + Molendinum[i][2]);
             if (position == Molendinum[i][0] || position == Molendinum[i][1] || position == Molendinum[i][2])
             {
                 UnityEngine.Debug.Log("FIRST IF PASSED");
-                UnityEngine.Debug.Log(position);
+                UnityEngine.Debug.Log("------POSITION-------:" + position);
                 UnityEngine.Debug.Log("CASILLA ["+ Molendinum[i][0] +"] PERTENECE A:"+ boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex);
                 UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][1] + "] PERTENECE A:"+boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
                 UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][2] + "] PERTENECE A:"+boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("--------------------------------------");
+                UnityEngine.Debug.Log("===============================================================================");
                 if (boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
                     UnityEngine.Debug.Log("SECOND IF PASSED");
