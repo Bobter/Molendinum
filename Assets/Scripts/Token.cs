@@ -27,11 +27,6 @@ public class Token : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Debug.Log(CanMoveToken());
-        }*/
     }
     int GetCurrentPlayer()
     {
@@ -110,22 +105,17 @@ public class Token : MonoBehaviour
             if (checkboxIndex==gameManager.movementIndexes[1])
             {
                 Debug.Log("LLEGUÉ A LA CASILLA");
-                
-                /*
-                gameManager.makeMill=gameManager.rules.Mill(checkboxIndex, gameManager.board, gameManager.currentPlayerIndex);
-                if (!gameManager.makeMill) gameManager.NextTurn();*/
             }
         }
     }
 
-    public void DeleteToken(){
+    public void Delete(){
         currentCheckbox.tokenPlayerIndex = -1;
         currentCheckbox.checkboxAvailable = true;
         currentCheckbox.currentToken = null;
         checkboxIndex = -1;
         gameManager.finishMoveToken = true;
         currentCheckbox = null;
-        
         activeToken(false);
     }
 

@@ -14,8 +14,7 @@ public class GameManager : MonoBehaviour
     public bool finishMoveToken=false;
     public int[] placedTokens = { 0, 0 };//contador de las fichas colocadas
     public int[] availableTokens = { 9, 9 };//contador de la cantidad de fichas activas
-
-    public int []movementIndexes = { -10,-10 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
+    public int []movementIndexes = { -1,-1 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
     public Token[,] arrayToken;
     public bool makeMill;//es verdadero si se formó un molino en el turno y es falso cuando no
     public Logic rules;
@@ -41,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (makeMill) deleteToken();
+            if (makeMill) DeleteToken();
             else SelecObject();
         }
 
@@ -80,23 +79,13 @@ public class GameManager : MonoBehaviour
                     placedTokens[currentPlayerIndex] += 1;
                     movementIndexes[0] = currentPlayerIndex;
                     movementIndexes[1] = box.checkboxIndex;
-                    Debug.Log("Jugador " + movementIndexes[0] + " coloca ficha en casilla " + movementIndexes[1]);
-                    // makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
-                    //if (!makeMill) NextTurn();
-                    
+                    Debug.Log("Jugador " + movementIndexes[0] + " coloca ficha en casilla " + movementIndexes[1]);  
                 }
-            }
-
-            else//cuando ya tiene colocada las fichas en el tablero
+            }else//cuando ya tiene colocada las fichas en el tablero
             {
                 if (hit.transform.CompareTag("token"))//si selecciona una ficha
                 {
-                    if (hit.transform.GetComponent<Token>().playerIndex == currentPlayerIndex)
-                    {
-                        SelectedToken = hit.transform.GetComponent<Token>();
-
-                    }
-                    Debug.Log("ficha");
+                    if (hit.transform.GetComponent<Token>().playerIndex == currentPlayerIndex) SelectedToken = hit.transform.GetComponent<Token>();
                 }
                 else if (hit.transform.CompareTag("box") && SelectedToken != null)//si selecciona una casilla y seleccionó antes la ficha a mover
                 {
@@ -104,19 +93,8 @@ public class GameManager : MonoBehaviour
                     box = hit.transform.GetComponent<CheckboxStatus>();
                     movementIndexes[0] = SelectedToken.checkboxIndex;
                     movementIndexes[1] = box.checkboxIndex;
-                
-                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))
-                    {
-                        //makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
-                        StartCoroutine(SelectedToken.Move(box.transform.position));
-                        //if (!makeMill) NextTurn();
-                    }
-                   
-                }
-                else
-                {
-                    selectingNothing();
-                }
+                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))StartCoroutine(SelectedToken.Move(box.transform.position));
+                }else selectingNothing();
             }
         }
         else
@@ -127,13 +105,9 @@ public class GameManager : MonoBehaviour
     }
     public bool Victory()
     {
-        if (availableTokens[currentPlayerIndex] <= 2)
-        {
-            return true;
-        }
-        return false;
+        return (availableTokens[currentPlayerIndex] <= 2)? true : false;
     }
-    void deleteToken()
+    void DeleteToken()
     {
         RaycastHit hit;
         Ray mouseDirection = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -146,7 +120,7 @@ public class GameManager : MonoBehaviour
                 if (deletedToken.playerIndex == deleteTokenIndex)
                 {
                     availableTokens[deleteTokenIndex] -= 1;
-                    deletedToken.DeleteToken();
+                    deletedToken.Delete();
                     makeMill = false;
                     Debug.Log(currentPlayerIndex+"  DELETE ->"+deleteTokenIndex);
                     if(!Victory()) NextTurn();
