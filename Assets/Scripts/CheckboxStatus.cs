@@ -16,7 +16,7 @@ public class CheckboxStatus : MonoBehaviour
     {
         checkboxAvailable = true;
         tokenPlayerIndex = -1;
-        GameObject.FindObjectOfType<GameManager>();
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
     // Update is called once per frame
     void Update()
