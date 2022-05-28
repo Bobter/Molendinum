@@ -73,14 +73,15 @@ public class Logic : MonoBehaviour
             UnityEngine.Debug.Log(i + ": " + Molendinum[i][2]);
             if (position == Molendinum[i][0] || position == Molendinum[i][1] || position == Molendinum[i][2])
             {
-                UnityEngine.Debug.Log("Ya llegue");
+                UnityEngine.Debug.Log("FIRST IF PASSED");
                 UnityEngine.Debug.Log(position);
-                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex);
-                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
-                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("CASILLA ["+ Molendinum[i][0] +"] PERTENECE A:"+ boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][1] + "] PERTENECE A:"+boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][2] + "] PERTENECE A:"+boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("--------------------------------------");
                 if (boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
-                    UnityEngine.Debug.Log("Ya llegue");
+                    UnityEngine.Debug.Log("SECOND IF PASSED");
                     return true;
                 }
             }
