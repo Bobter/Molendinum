@@ -114,8 +114,6 @@ public class Token : MonoBehaviour
         checkboxIndex = -1;
         currentCheckbox = null;
         activeToken(false);
-        gameManager.NextTurn();
-        
     }
 
 
