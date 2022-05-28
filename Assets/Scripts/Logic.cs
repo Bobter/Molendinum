@@ -65,7 +65,7 @@ public class Logic : MonoBehaviour
     //Entrada checkbox.currentIndex y Board 
     public bool Mill(int position, Board boardN, int CurrentPlayer)
     {
-        UnityEngine.Debug.Log(position);
+        UnityEngine.Debug.Log("------POSITION-------:"+position);
         for (int i = 0; i < 15; i++)
         {
             UnityEngine.Debug.Log(i+": "+Molendinum[i][0]);

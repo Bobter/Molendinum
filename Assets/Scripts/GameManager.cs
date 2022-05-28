@@ -34,16 +34,16 @@ public class GameManager : MonoBehaviour
         /*Ray direction = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(direction.origin, direction.direction * maxDistance, Color.cyan);*/
 
-        
+        /*
         if (finishMoveToken)
         {
-            makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
+            //makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
             finishMoveToken = false;
             if (!makeMill)
             {
                 NextTurn();
             }
-        }
+        }*/
 
         if (makeMill)
         {
@@ -80,10 +80,12 @@ public class GameManager : MonoBehaviour
             {
                  if (hit.transform.CompareTag("box") )
                 {
-
-                    arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]].activeToken(true);
-                    arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]].transform.position = hit.transform.position;
+                    box = hit.transform.GetComponent<CheckboxStatus>();
+                    SelectedToken= arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]];
+                    SelectedToken.activeToken(true);
+                    SelectedToken.transform.position =box.transform.position;
                     placedTokens[currentPlayerIndex] += 1;
+                    movementIndexes[1] = box.checkboxIndex;
                     makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
                     if (!makeMill) NextTurn();
                     
@@ -110,7 +112,9 @@ public class GameManager : MonoBehaviour
                 
                     if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))
                     {
+                        makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
                         StartCoroutine(SelectedToken.Move(box.transform.position));
+                        if (!makeMill) NextTurn();
                     }
                    
                 }
@@ -139,6 +143,7 @@ public class GameManager : MonoBehaviour
                 Token deletedToken = hit.transform.GetComponent<Token>();
                 if (deletedToken.playerIndex == deleteTokenIndex)
                 {
+                    availableTokens[currentPlayerIndex] -= 1;
                     deletedToken.DeleteToken();
                     makeMill = false;
                     NextTurn();

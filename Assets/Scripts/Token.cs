@@ -98,6 +98,7 @@ public class Token : MonoBehaviour
         gameObject.transform.position = newPosition;
         gameManager.selectingNothing();
         gameManager.finishMoveToken = true;
+        
     }
 
     private void OnTriggerEnter(Collider other)
