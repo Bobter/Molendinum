@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         
         if (finishMoveToken)
         {
-            makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
+            makeMill = rules.Mill(movementIndexes[1], board,currentPlayerIndex);
             finishMoveToken = false;
         }
         else
@@ -47,12 +47,14 @@ public class GameManager : MonoBehaviour
                 SelecObject();
             }
         }
-        /*
+      
         if (makeMill)
         {
+            Debug.Log("MILL");
             deleteToken();
+            makeMill = false;
+            NextTurn();
         }
-        else NextTurn();*/
        
     }
 
