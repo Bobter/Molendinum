@@ -60,9 +60,6 @@ public class Logic : MonoBehaviour
         //Molinos en vertical que FALTARON
         Molendinum.Add(new int[] { 1, 4, 7 });
         Molendinum.Add(new int[] { 16, 19, 22 });
-
-
-
     }
     
     //Funcion que comprueba si hay un Molino(3 en raya)
@@ -109,6 +106,4 @@ public class Logic : MonoBehaviour
         return false;
     }
 
-
-    
 }
