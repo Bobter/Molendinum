@@ -72,19 +72,12 @@ public class Logic : MonoBehaviour
         {
             if (position == MolendinumH[i][0] || position == MolendinumH[i][1] || position == MolendinumH[i][2])
             {
-                UnityEngine.Debug.Log("HORIZONTAL || FIRST IF PASSED");
-                UnityEngine.Debug.Log("HORIZONTAL || ------POSITION-------:" + position);
-                UnityEngine.Debug.Log("HORIZONTAL || CASILLA ["+ MolendinumH[i][0] +"] PERTENECE A:"+ boardN.Checkbox[MolendinumH[i][0]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("HORIZONTAL || CASILLA [" + MolendinumH[i][1] + "] PERTENECE A:"+boardN.Checkbox[MolendinumH[i][1]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("HORIZONTAL || CASILLA [" + MolendinumH[i][2] + "] PERTENECE A:"+boardN.Checkbox[MolendinumH[i][2]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("===============================================================================");
                 if (boardN.Checkbox[MolendinumH[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumH[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumH[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
-                    UnityEngine.Debug.Log("SECOND IF PASSED");
                     return true;
                 }
             }
-            else if (position == MolendinumV[i][0] || position == MolendinumV[i][1] || position == MolendinumV[i][2])
+            if (position == MolendinumV[i][0] || position == MolendinumV[i][1] || position == MolendinumV[i][2])
             {
                 UnityEngine.Debug.Log("VERTICAL || FIRST IF PASSED");
                 UnityEngine.Debug.Log("VERTICAL || ------POSITION-------:" + position);
@@ -116,13 +109,13 @@ public class Logic : MonoBehaviour
             return true;
         if (begin == end)
             return false;
+        if (Neighbour[begin, 0] == end || Neighbour[begin, 1] == end || Neighbour[begin, 2] == end || Neighbour[begin, 3] == end)
+            return true;
         if (end < 0 || end >= boardN.Coordinates.Length)
             return false;
         if (begin < -1 || begin >= boardN.Coordinates.Length)
             return false;
-        if (Neighbour[begin,0]==end || Neighbour[begin, 1] == end || Neighbour[begin, 2] == end || Neighbour[begin, 3] == end)
-            return true;
-        
+
         return false;
     }
 
