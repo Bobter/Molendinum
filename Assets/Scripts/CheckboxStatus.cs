@@ -9,14 +9,11 @@ public class CheckboxStatus : MonoBehaviour
     //si el jugador tiene el indice 1 entonces la ficha es de color blanco
     //si el jugador tiene el indice 0 entonces la ficha es de color negro
     public int tokenPlayerIndex;
-    public Token currentToken;
-    GameManager gameManager;
+    Token currentToken;
     // Start is called before the first frame update
     void Start()
     {
         checkboxAvailable = true;
-        gameManager = GameObject.FindObjectOfType<GameManager>();
-        
         tokenPlayerIndex = -1;
     }
     // Update is called once per frame
@@ -29,24 +26,10 @@ public class CheckboxStatus : MonoBehaviour
     {
         if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == true && currentToken == null)
         {
-            Debug.Log("LLEGUOO LA FICHA");
             //tokeIndex captura el indice de la ficha entrante
+            currentToken = other.GetComponent<Token>();
             tokenPlayerIndex = other.gameObject.transform.GetComponent<Token>().playerIndex;
-            Debug.Log("---PLAYER " + tokenPlayerIndex + " IN POSITIION " + checkboxIndex);
-            if (gameManager.movementIndexes[1]==checkboxIndex)/////////////////////////
-            {
-                currentToken = other.GetComponent<Token>();
-                checkboxAvailable = false;
-                gameManager.makeMill = gameManager.rules.Mill(checkboxIndex, gameManager.board, gameManager.currentPlayerIndex);
-                if (!gameManager.makeMill)
-                {
-                    Debug.Log("SIGUIENTE TURNO");
-                    gameManager.NextTurn();
-                }
-                
-            }
-            //rules.Mill(checkboxIndex,board,tokenPlayerIndex);
-
+            checkboxAvailable = false;
         }
     }
 
@@ -55,8 +38,7 @@ public class CheckboxStatus : MonoBehaviour
         if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == false && currentToken.gameObject == other.gameObject)
         {
             tokenPlayerIndex = -1;
-            currentToken = null;
-            checkboxAvailable = true;   
+            checkboxAvailable = true;
         }
     }
 }
