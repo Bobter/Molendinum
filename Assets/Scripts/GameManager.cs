@@ -15,11 +15,11 @@ public class GameManager : MonoBehaviour
     public int[] placedTokens = { 0, 0 };//contador de las fichas colocadas
     public int[] availableTokens = { 9, 9 };//contador de la cantidad de fichas activas
 
-    public int []movementIndexes = { -1,-1 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
+    public int []movementIndexes = { -10,-10 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
     public Token[,] arrayToken;
-    bool makeMill;//es verdadero si se formó un molino en el turno y es falso cuando no
-    Logic rules;
-    Board board;
+    public bool makeMill;//es verdadero si se formó un molino en el turno y es falso cuando no
+    public Logic rules;
+    public Board board;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,17 +34,14 @@ public class GameManager : MonoBehaviour
         /*Ray direction = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(direction.origin, direction.direction * maxDistance, Color.cyan);*/
 
-        /*
+        
         if (finishMoveToken)
-        {
-            //makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
+        {/*
+            makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
+            if (!makeMill) NextTurn();*/
             finishMoveToken = false;
-            if (!makeMill)
-            {
-                NextTurn();
-            }
-        }*/
-
+        }
+        
         if (makeMill)
         {
             Debug.Log("MILL");
@@ -67,7 +64,7 @@ public class GameManager : MonoBehaviour
     public void NextTurn()
     {
         currentPlayerIndex = ((currentPlayerIndex +1)% 2);
-        Debug.Log(rules.Mill(movementIndexes[1], board, currentPlayerIndex));
+        //Debug.Log(rules.Mill(movementIndexes[1], board, currentPlayerIndex));
     }
     public void SelecObject()//función de selección del objeto
     {
@@ -87,8 +84,9 @@ public class GameManager : MonoBehaviour
                     placedTokens[currentPlayerIndex] += 1;
                     movementIndexes[0] = currentPlayerIndex;
                     movementIndexes[1] = box.checkboxIndex;
-                    makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
-                    if (!makeMill) NextTurn();
+                    Debug.Log("Jugador " + movementIndexes[0] + " coloca ficha en casilla " + movementIndexes[1]);
+                    // makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
+                    //if (!makeMill) NextTurn();
                     
                 }
             }
@@ -113,9 +111,9 @@ public class GameManager : MonoBehaviour
                 
                     if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))
                     {
-                        makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
+                        //makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
                         StartCoroutine(SelectedToken.Move(box.transform.position));
-                        if (!makeMill) NextTurn();
+                        //if (!makeMill) NextTurn();
                     }
                    
                 }

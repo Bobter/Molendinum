@@ -106,14 +106,27 @@ public class Token : MonoBehaviour
         if (other.transform.CompareTag("box"))
         {
             currentCheckbox = other.GetComponent<CheckboxStatus>();
+            Debug.Log("ENTRÉ A UNA CASIILLA RANDOM DE INDICE "+currentCheckbox.checkboxIndex);
             checkboxIndex = currentCheckbox.checkboxIndex;
+            if (checkboxIndex==gameManager.movementIndexes[1])
+            {
+                Debug.Log("LLEGUÉ A LA CASILLA");
+                
+                /*
+                gameManager.makeMill=gameManager.rules.Mill(checkboxIndex, gameManager.board, gameManager.currentPlayerIndex);
+                if (!gameManager.makeMill) gameManager.NextTurn();*/
+            }
         }
     }
 
     public void DeleteToken(){
         currentCheckbox.tokenPlayerIndex = -1;
+        currentCheckbox.checkboxAvailable = true;
+        currentCheckbox.currentToken = null;
         checkboxIndex = -1;
+        gameManager.finishMoveToken = true;
         currentCheckbox = null;
+        
         activeToken(false);
     }
 
