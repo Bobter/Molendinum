@@ -9,7 +9,7 @@ public class CheckboxStatus : MonoBehaviour
     //si el jugador tiene el indice 1 entonces la ficha es de color blanco
     //si el jugador tiene el indice 0 entonces la ficha es de color negro
     public int tokenPlayerIndex;
-    Token currentToken;
+    public Token currentToken;
     GameManager gameManager;
     // Start is called before the first frame update
     void Start()
