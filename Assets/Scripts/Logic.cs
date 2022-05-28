@@ -77,7 +77,7 @@ public class Logic : MonoBehaviour
                 UnityEngine.Debug.Log(position);
                 UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex);
                 UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
-                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
+                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex);
                 if (boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
                     UnityEngine.Debug.Log("Ya llegue");

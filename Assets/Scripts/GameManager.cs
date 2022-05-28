@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
                     SelectedToken.activeToken(true);
                     SelectedToken.transform.position =box.transform.position;
                     placedTokens[currentPlayerIndex] += 1;
+                    movementIndexes[0] = currentPlayerIndex;
                     movementIndexes[1] = box.checkboxIndex;
                     makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
                     if (!makeMill) NextTurn();
