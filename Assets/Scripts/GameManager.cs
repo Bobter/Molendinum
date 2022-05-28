@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    bool Victory()
+    public bool Victory()
     {
         if (availableTokens[currentPlayerIndex] <= 2)
         {
@@ -145,9 +145,10 @@ public class GameManager : MonoBehaviour
                 Token deletedToken = hit.transform.GetComponent<Token>();
                 if (deletedToken.playerIndex == deleteTokenIndex)
                 {
-                    availableTokens[currentPlayerIndex] -= 1;
+                    availableTokens[deleteTokenIndex] -= 1;
                     deletedToken.DeleteToken();
                     makeMill = false;
+                    Debug.Log(currentPlayerIndex+"  DELETE ->"+deleteTokenIndex);
                     if(!Victory()) NextTurn();
                 }
             }

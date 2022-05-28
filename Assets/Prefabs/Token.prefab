@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3031268966223927748}
   - component: {fileID: 3031268966223927749}
   - component: {fileID: 3031268966223927751}
-  - component: {fileID: 3031268966223927750}
+  - component: {fileID: 7238203249116718894}
   m_Layer: 0
   m_Name: Token
   m_TagString: token
@@ -196,14 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6795c1afe7a06904fa007671a97fcdf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unplacedTokens: 9
   currentPlayerIndex: 0
   playerIndex: 1
-  placeIndex: 0
+  checkboxIndex: 0
   SelectionEffect: {fileID: 3031268965473031155}
-  timeTraslation: 0.25
---- !u!136 &3031268966223927750
-CapsuleCollider:
+  timeTraslation: 0.5
+--- !u!65 &7238203249116718894
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -212,7 +211,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 2.95
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 8, z: 1.2}
+  m_Center: {x: 0, y: 3, z: 0}

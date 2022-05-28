@@ -74,6 +74,13 @@ public class Logic : MonoBehaviour
             {
                 if (boardN.Checkbox[MolendinumH[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumH[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumH[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
+                    UnityEngine.Debug.Log("SECOND IF PASSED"); UnityEngine.Debug.Log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                    UnityEngine.Debug.Log("HORIZONTALLLLLLLLLLLL| ------POSITION-------:" + position);
+                    UnityEngine.Debug.Log("HORIZONTAL || CASILLA [" + MolendinumH[i][0] + "] PERTENECE A:" + boardN.Checkbox[MolendinumH[i][0]].tokenPlayerIndex);
+                    UnityEngine.Debug.Log("HORIZONTAL || CASILLA [" + MolendinumH[i][1] + "] PERTENECE A:" + boardN.Checkbox[MolendinumH[i][1]].tokenPlayerIndex);
+                    UnityEngine.Debug.Log("HORIZONTAL || CASILLA [" + MolendinumH[i][2] + "] PERTENECE A:" + boardN.Checkbox[MolendinumH[i][2]].tokenPlayerIndex);
+                    UnityEngine.Debug.Log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+
                     return true;
                 }
             }
@@ -81,14 +88,16 @@ public class Logic : MonoBehaviour
             {
                 UnityEngine.Debug.Log("VERTICAL || FIRST IF PASSED");
                 UnityEngine.Debug.Log("VERTICAL || FIRST IF PASSED");
-                UnityEngine.Debug.Log("VERTICAL || ------POSITION-------:" + position);
-                UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][0] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][0]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][1] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][1]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][2] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][2]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("===============================================================================");
+              
                 if (boardN.Checkbox[MolendinumV[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumV[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumV[i][2]].tokenPlayerIndex == CurrentPlayer)
                 {
-                    UnityEngine.Debug.Log("SECOND IF PASSED");
+                    UnityEngine.Debug.Log("SECOND IF PASSED"); UnityEngine.Debug.Log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                    UnityEngine.Debug.Log("VERTICAL || ------POSITION-------:" + position);
+                    UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][0] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][0]].tokenPlayerIndex);
+                    UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][1] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][1]].tokenPlayerIndex);
+                    UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][2] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][2]].tokenPlayerIndex);
+                    UnityEngine.Debug.Log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                   
                     return true;
                 }
             }

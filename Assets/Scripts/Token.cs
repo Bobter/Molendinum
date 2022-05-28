@@ -65,7 +65,7 @@ public class Token : MonoBehaviour
 
     private void OnMouseOver()
     {
-        Debug.Log("sobre");
+       
         if (playerIndex==GetCurrentPlayer()&&gameManager.placedTokens[playerIndex]>=gameManager.maxTokens)
         {
             SelectionEffect.SetActive(true);
@@ -83,7 +83,6 @@ public class Token : MonoBehaviour
 
     public IEnumerator Move(Vector3 newPosition)
     {
-        Debug.Log("strat traslation");
         Vector3 startPosition = gameObject.transform.position;
         float currentTime = 0;
         

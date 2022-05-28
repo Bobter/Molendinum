@@ -31,6 +31,12 @@ public class CheckboxStatus : MonoBehaviour
             currentToken = null;
             checkboxAvailable = true;
             Debug.Log("TERMINA SALIDA");
+            /*if (gameManager.makeMill)
+            {
+                gameManager.makeMill = gameManager.rules.Mill(checkboxIndex, gameManager.board, gameManager.currentPlayerIndex);
+            }*/
+          
+           
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -46,7 +52,7 @@ public class CheckboxStatus : MonoBehaviour
                 currentToken = other.GetComponent<Token>();
                 checkboxAvailable = false;
                 gameManager.makeMill = gameManager.rules.Mill(checkboxIndex, gameManager.board, gameManager.currentPlayerIndex);
-                if (!gameManager.makeMill)
+                if (!gameManager.makeMill&&!gameManager.Victory())
                 {
                     Debug.Log("SIGUIENTE TURNO");
                     gameManager.NextTurn();
