@@ -37,8 +37,22 @@ public class GameManager : MonoBehaviour
         
         if (finishMoveToken)
         {
-            makeMill = rules.Mill(movementIndexes[1], board,currentPlayerIndex);
+            makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
             finishMoveToken = false;
+            if (!makeMill)
+            {
+                NextTurn();
+            }
+        }
+
+        if (makeMill)
+        {
+            Debug.Log("MILL");
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                deleteToken();
+            }
+            
         }
         else
         {
@@ -47,20 +61,13 @@ public class GameManager : MonoBehaviour
                 SelecObject();
             }
         }
-      
-        if (makeMill)
-        {
-            Debug.Log("MILL");
-            deleteToken();
-            makeMill = false;
-            NextTurn();
-        }
        
     }
 
     public void NextTurn()
     {
         currentPlayerIndex = ((currentPlayerIndex +1)% 2);
+        Debug.Log(rules.Mill(movementIndexes[1], board, currentPlayerIndex));
     }
     public void SelecObject()//función de selección del objeto
     {
@@ -77,7 +84,9 @@ public class GameManager : MonoBehaviour
                     arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]].activeToken(true);
                     arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]].transform.position = hit.transform.position;
                     placedTokens[currentPlayerIndex] += 1;
-                    NextTurn();
+                    makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
+                    if (!makeMill) NextTurn();
+                    
                 }
             }
 
@@ -102,7 +111,6 @@ public class GameManager : MonoBehaviour
                     if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))
                     {
                         StartCoroutine(SelectedToken.Move(box.transform.position));
-                        NextTurn();
                     }
                    
                 }

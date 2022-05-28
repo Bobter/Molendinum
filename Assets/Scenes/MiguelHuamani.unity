@@ -4000,7 +4000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa04cffc53aa45499eea1d4adec8cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bobter: {fileID: 0}
+  GM: {fileID: 0}
 --- !u!1 &1881568847
 GameObject:
   m_ObjectHideFlags: 0
