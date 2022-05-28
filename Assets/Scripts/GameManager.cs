@@ -33,31 +33,27 @@ public class GameManager : MonoBehaviour
     {
         /*Ray direction = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(direction.origin, direction.direction * maxDistance, Color.cyan);*/
+        if (Victory())
+        {
+            Time.timeScale = 0;
+            Debug.Log("VICTORYYYYYYYY");
+            return;
+        }
+        else if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (makeMill) deleteToken();
+            else SelecObject();
+        }
 
-        
         if (finishMoveToken)
         {/*
             makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
             if (!makeMill) NextTurn();*/
             finishMoveToken = false;
         }
+
         
-        if (makeMill)
-        {
-            Debug.Log("MILL");
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                deleteToken();
-            }
-            
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                SelecObject();
-            }
-        }
+          
        
     }
 
@@ -129,7 +125,14 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
+    bool Victory()
+    {
+        if (availableTokens[currentPlayerIndex] <= 2)
+        {
+            return true;
+        }
+        return false;
+    }
     void deleteToken()
     {
         RaycastHit hit;
@@ -145,7 +148,7 @@ public class GameManager : MonoBehaviour
                     availableTokens[currentPlayerIndex] -= 1;
                     deletedToken.DeleteToken();
                     makeMill = false;
-                    NextTurn();
+                    if(!Victory()) NextTurn();
                 }
             }
         }     

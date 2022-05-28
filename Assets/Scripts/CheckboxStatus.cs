@@ -16,15 +16,23 @@ public class CheckboxStatus : MonoBehaviour
     {
         checkboxAvailable = true;
         gameManager = GameObject.FindObjectOfType<GameManager>();
-        
         tokenPlayerIndex = -1;
     }
-    // Update is called once per frame
     void Update()
     {
 
     }
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == false && currentToken == other.GetComponent<Token>())
+        {
+            Debug.Log("INICIA SALIDA");
+            tokenPlayerIndex = -1;
+            currentToken = null;
+            checkboxAvailable = true;
+            Debug.Log("TERMINA SALIDA");
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == true && currentToken == null)
@@ -45,18 +53,9 @@ public class CheckboxStatus : MonoBehaviour
                 }
                 
             }
-            //rules.Mill(checkboxIndex,board,tokenPlayerIndex);
 
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == false && currentToken.gameObject == other.gameObject)
-        {
-            tokenPlayerIndex = -1;
-            currentToken = null;
-            checkboxAvailable = true;   
-        }
-    }
+   
 }
