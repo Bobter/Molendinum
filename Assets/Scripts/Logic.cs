@@ -80,6 +80,7 @@ public class Logic : MonoBehaviour
             if (position == MolendinumV[i][0] || position == MolendinumV[i][1] || position == MolendinumV[i][2])
             {
                 UnityEngine.Debug.Log("VERTICAL || FIRST IF PASSED");
+                UnityEngine.Debug.Log("VERTICAL || FIRST IF PASSED");
                 UnityEngine.Debug.Log("VERTICAL || ------POSITION-------:" + position);
                 UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][0] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][0]].tokenPlayerIndex);
                 UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][1] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][1]].tokenPlayerIndex);
