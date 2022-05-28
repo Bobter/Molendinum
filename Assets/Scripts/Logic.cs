@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using UnityEngine;
 
 public class Logic : MonoBehaviour
@@ -35,8 +34,8 @@ public class Logic : MonoBehaviour
                             {14,22,23,23},  //23
                             };  //Hay 24 posiciones
 
-    //Obteniendo posiciones
     public GameManager GM;
+    //Inicializando Rules
     void Start()
     {
         GM = gameObject.GetComponent<GameManager>();
@@ -48,8 +47,8 @@ public class Logic : MonoBehaviour
         //MOLINOS
         for (int i = 0; i < 8; i++)
         {
-            Molendinum.Add(new int[] { 0 + (3 * i), 1 + (3 * i), 2 + (3 * i) });
             //Molinos en horizontal
+            Molendinum.Add(new int[] { 0 + (3 * i), 1 + (3 * i), 2 + (3 * i) });
         }
         for (int i = 0; i < 3; i++)
         {
@@ -63,17 +62,25 @@ public class Logic : MonoBehaviour
     }
     
     //Funcion que comprueba si hay un Molino(3 en raya)
-
     //Entrada checkbox.currentIndex y Board 
     public bool Mill(int position, Board boardN, int CurrentPlayer)
     {
-
+        UnityEngine.Debug.Log(position);
         for (int i = 0; i < 15; i++)
         {
+            UnityEngine.Debug.Log(i+": "+Molendinum[i][0]);
+            UnityEngine.Debug.Log(i + ": " + Molendinum[i][1]);
+            UnityEngine.Debug.Log(i + ": " + Molendinum[i][2]);
             if (position == Molendinum[i][0] || position == Molendinum[i][1] || position == Molendinum[i][2])
             {
+                UnityEngine.Debug.Log("Ya llegue");
+                UnityEngine.Debug.Log(position);
+                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex);
+                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
+                UnityEngine.Debug.Log(boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
                 if (boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
+                    UnityEngine.Debug.Log("Ya llegue");
                     return true;
                 }
             }
