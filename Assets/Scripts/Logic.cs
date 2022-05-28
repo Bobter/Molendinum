@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class Logic : MonoBehaviour
 {       
-    //Definiendo MOLINOS y VECINOSD
-    public List<int[]> Molendinum = new List<int[]>();
+    //Definiendo MOLINOS y VECINOS
+    public List<int[]> MolendinumH = new List<int[]>();
+    public List<int[]> MolendinumV = new List<int[]>();
+    //Definiendo VECINOS
     public int[,] Neighbour = {{1,9,0,0},   //0
                             {0,2,4,1},      //1
                             {1,14,2,2},     //2
@@ -48,17 +50,17 @@ public class Logic : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             //Molinos en horizontal
-            Molendinum.Add(new int[] { 0 + (3 * i), 1 + (3 * i), 2 + (3 * i) });
+            MolendinumH.Add(new int[] { 0 + (3 * i), 1 + (3 * i), 2 + (3 * i) });
         }
         for (int i = 0; i < 3; i++)
         {
             //Molinos en vertical (FALTAN 2)
-            Molendinum.Add(new int[] { 0 + (3 * i), 9 + i, 21 - (3 * i) });
-            Molendinum.Add(new int[] { 8 - (3 * i), 12 + i, 17 + (3 * i) });
+            MolendinumV.Add(new int[] { 0 + (3 * i), 9 + i, 21 - (3 * i) });
+            MolendinumV.Add(new int[] { 8 - (3 * i), 12 + i, 17 + (3 * i) });
         }
         //Molinos en vertical que FALTARON
-        Molendinum.Add(new int[] { 1, 4, 7 });
-        Molendinum.Add(new int[] { 16, 19, 22 });
+        MolendinumV.Add(new int[] { 1, 4, 7 });
+        MolendinumV.Add(new int[] { 16, 19, 22 });
     }
     
     //Funcion que comprueba si hay un Molino(3 en raya)
@@ -66,24 +68,33 @@ public class Logic : MonoBehaviour
     public bool Mill(int position, Board boardN, int CurrentPlayer)
     {
         
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 8; i++)
         {
-            if (position == Molendinum[i][0] || position == Molendinum[i][1] || position == Molendinum[i][2])
+            if (position == MolendinumH[i][0] || position == MolendinumH[i][1] || position == MolendinumH[i][2])
             {
-                UnityEngine.Debug.Log("FIRST IF PASSED");
-                UnityEngine.Debug.Log("------POSITION-------:" + position);
-                UnityEngine.Debug.Log("CASILLA ["+ Molendinum[i][0] +"] PERTENECE A:"+ boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][1] + "] PERTENECE A:"+boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][2] + "] PERTENECE A:"+boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex);
-                UnityEngine.Debug.Log("========================================");
-                if (boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex == CurrentPlayer) 
+                UnityEngine.Debug.Log("HORIZONTAL || FIRST IF PASSED");
+                UnityEngine.Debug.Log("HORIZONTAL || ------POSITION-------:" + position);
+                UnityEngine.Debug.Log("HORIZONTAL || CASILLA ["+ MolendinumH[i][0] +"] PERTENECE A:"+ boardN.Checkbox[MolendinumH[i][0]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("HORIZONTAL || CASILLA [" + MolendinumH[i][1] + "] PERTENECE A:"+boardN.Checkbox[MolendinumH[i][1]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("HORIZONTAL || CASILLA [" + MolendinumH[i][2] + "] PERTENECE A:"+boardN.Checkbox[MolendinumH[i][2]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("===============================================================================");
+                if (boardN.Checkbox[MolendinumH[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumH[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumH[i][2]].tokenPlayerIndex == CurrentPlayer) 
                 {
                     UnityEngine.Debug.Log("SECOND IF PASSED");
-                    UnityEngine.Debug.Log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-                    UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][0] + "] PERTENECE A:" + boardN.Checkbox[Molendinum[i][0]].tokenPlayerIndex);
-                    UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][1] + "] PERTENECE A:" + boardN.Checkbox[Molendinum[i][1]].tokenPlayerIndex);
-                    UnityEngine.Debug.Log("CASILLA [" + Molendinum[i][2] + "] PERTENECE A:" + boardN.Checkbox[Molendinum[i][2]].tokenPlayerIndex);
-                    UnityEngine.Debug.Log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+                    return true;
+                }
+            }
+            else if (position == MolendinumV[i][0] || position == MolendinumV[i][1] || position == MolendinumV[i][2])
+            {
+                UnityEngine.Debug.Log("VERTICAL || FIRST IF PASSED");
+                UnityEngine.Debug.Log("VERTICAL || ------POSITION-------:" + position);
+                UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][0] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][0]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][1] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][1]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("VERTICAL || CASILLA [" + MolendinumV[i][2] + "] PERTENECE A:" + boardN.Checkbox[MolendinumV[i][2]].tokenPlayerIndex);
+                UnityEngine.Debug.Log("===============================================================================");
+                if (boardN.Checkbox[MolendinumV[i][0]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumV[i][1]].tokenPlayerIndex == CurrentPlayer && boardN.Checkbox[MolendinumV[i][2]].tokenPlayerIndex == CurrentPlayer)
+                {
+                    UnityEngine.Debug.Log("SECOND IF PASSED");
                     return true;
                 }
             }
@@ -101,18 +112,17 @@ public class Logic : MonoBehaviour
     public bool ValidMovement(int begin, int end, Board boardN, int CurrentPlayer)
     {
         GM = GameObject.FindObjectOfType<GameManager>();
-
+        if (GM.availableTokens[CurrentPlayer] == 3)
+            return true;
         if (begin == end)
             return false;
         if (end < 0 || end >= boardN.Coordinates.Length)
             return false;
         if (begin < -1 || begin >= boardN.Coordinates.Length)
             return false;
-        if (Neighbour[begin,0]==end || Neighbour[begin, 1] == end || Neighbour[begin, 2] == end || Neighbour[begin, 0] == end)
+        if (Neighbour[begin,0]==end || Neighbour[begin, 1] == end || Neighbour[begin, 2] == end || Neighbour[begin, 3] == end)
             return true;
-        if (GM.availableTokens[CurrentPlayer]==3)
-            return true;
-
+        
         return false;
     }
 
