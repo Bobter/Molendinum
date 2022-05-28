@@ -120,7 +120,7 @@ public class Logic : MonoBehaviour
             return false;
         if (begin < -1 || begin >= boardN.Coordinates.Length)
             return false;
-        if (Neighbour[begin,0]==end || Neighbour[begin, 1] == end || Neighbour[begin, 2] == end || Neighbour[begin, 0] == end)
+        if (Neighbour[begin,0]==end || Neighbour[begin, 1] == end || Neighbour[begin, 2] == end || Neighbour[begin, 3] == end)
             return true;
         
         return false;
