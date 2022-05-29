@@ -3,33 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Token : MonoBehaviour
-{   //varaibles privadas
-    private Color tokenMeshColor;//guarda el color de la ficha 
-    private bool selected;//booleano que indica si la ficha está o no seleccionada
-    private GameManager gameManager;//adquiere el gameManager que hay en la escena
-    int unplacedTokens;//variables extraida del manager que nos muestra cuantas fichas faltan colocar en el tablero
-    CheckboxStatus currentCheckbox; 
-    //variables públicas
+{   
     public int currentPlayerIndex;//indice del jugador del que es su turno
     public int playerIndex;//indice del jugador que usará la ficha
     public int checkboxIndex;//indice del la posición de la ficha
     public GameObject SelectionEffect;//hace referencia an círculo que es un objeto hijo de la ficha, este círculo sirve par amostrar si la ficha está siendo seleccionada
     public float timeTraslation;//timepo que demorará en moverse de un lado a otro
-    // Start is called before the first frame update
-  
+    public Color tokenMeshColor;//guarda el color de la ficha 
+    public GameManager gameManager;//adquiere el gameManager que hay en la escena
+    private CheckboxStatus currentCheckbox;//casilla en la que se encuentra actualmente
+
     void Start()
     {
-        SetTokenOwner(playerIndex);
+        SetTokenOwner(playerIndex);//asignar el indice del jugador y guardar el color de este
         gameManager = GameObject.FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        currentPlayerIndex = gameManager.currentPlayerIndex;
+        currentPlayerIndex = gameManager.currentPlayerIndex;//
+        if (gameObject.GetComponent<MeshRenderer>() != null) gameObject.GetComponent<MeshRenderer>().material.color = tokenMeshColor;//cumprueba si el objeto tiene el elemento MeshRenderer par aluego colocar el color asignado
     }
     // Update is called once per frame
-    void Update()
-    {
-    }
-    int GetCurrentPlayer()
+    public int GetCurrentPlayer()
     {
         return gameManager.currentPlayerIndex;
+    }
+
+    private void OnMouseOver()
+    {    //si es el turno del jugaodr actual , si ya se pusieron todas las fichas en el tablero y si no se formó un molino
+        if (playerIndex == GetCurrentPlayer() && gameManager.placedTokens[playerIndex] == gameManager.maxTokens && !gameManager.makeMill)
+            SelectionEffect.SetActive(true); //entonces activará el efecto del círculo al pasar el cursor sobre la ficha
+
+    }
+    private void OnMouseExit()
+    {
+        SelectionEffect.SetActive(false);//desactuva el efecto del círculo cuando quitamos el cursor de la ficha
     }
     public void SetTokenOwner(int index)//asigna la propiedades iniciales de la ficha y la crea con un color según el indice del jugador al que pertenezca 
     {
@@ -44,37 +49,7 @@ public class Token : MonoBehaviour
         {
             tokenMeshColor = Color.white;//se guarda el color blanco
         }
-        if(gameObject.GetComponent<MeshRenderer>()!=null) gameObject.GetComponent<MeshRenderer>().material.color = tokenMeshColor;//se le añade el color guardado
-        selected = false;//al principio ,ninguna ficha está seleccionada
     }
-    public bool CanMoveToken()//función que retorna si se puede mover o no la ficha 
-    {
-        if (unplacedTokens <= 0 && GetCurrentPlayer() == playerIndex)
-        {
-            return true;
-        }
-        return false;
-    }
-   
-
-    private void OnMouseOver()
-    {
-       
-        if (playerIndex==GetCurrentPlayer()&&gameManager.placedTokens[playerIndex]==gameManager.maxTokens)
-        {
-            SelectionEffect.SetActive(true);
-        }  
-    }
-    private void OnMouseExit()
-    {
-        SelectionEffect.SetActive(false);
-    }
-
-    public void activeToken(bool active)
-    {
-        gameObject.SetActive(active);
-    }
-
     public IEnumerator Move(Vector3 newPosition)
     {
         Vector3 startPosition = gameObject.transform.position;
@@ -86,34 +61,24 @@ public class Token : MonoBehaviour
             gameObject.transform.position = Vector3.Lerp(startPosition, newPosition, currentTime/timeTraslation);
             yield return null;
         }
-
         gameObject.transform.position = newPosition;
         gameManager.selectingNothing();
         
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("box"))
         {
             currentCheckbox = other.GetComponent<CheckboxStatus>();
-            Debug.Log("ENTRÉ A UNA CASIILLA RANDOM DE INDICE "+currentCheckbox.checkboxIndex);
             checkboxIndex = currentCheckbox.checkboxIndex;
-            if (checkboxIndex==gameManager.movementIndexes[1])
-            {
-                Debug.Log("LLEGUÉ A LA CASILLA");
-            }
         }
     }
-
     public void Delete(){
         currentCheckbox.tokenPlayerIndex = -1;
         currentCheckbox.checkboxAvailable = true;
         currentCheckbox.currentToken = null;
         checkboxIndex = -1;
         currentCheckbox = null;
-        activeToken(false);
+        gameObject.SetActive(false);
     }
-
-
 }

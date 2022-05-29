@@ -8,19 +8,30 @@ public class TokenTest
 {
     GameManager GM;
     Token token;
-    GameObject t;
     // A Test behaves as an ordinary method
     [Test]
-    public void TestSetTokenOwner()
+    public void TestGetCurrentPlayer()//prueba de obtención del indice del jugador actual
+    {   GM= GameObject.FindObjectOfType<GameManager>();
+        GM.currentPlayerIndex = 1;
+        token = GameObject.FindObjectOfType<Token>();
+        token.gameManager = GM;
+        token.SetTokenOwner(1);
+        Assert.AreEqual(1,token.GetCurrentPlayer());
+    }
+    [Test]
+    public void TestSetTokenOwner0()//pueba de función de inicialización de la ficha
     {
-        t.AddComponent<Token>();
-        t.AddComponent<MeshRenderer>();
-        t.GetComponent<Token>().SetTokenOwner(0);
-        Assert.Equals(0, t.GetComponent<Token>().playerIndex);
-        
+        token = GameObject.FindObjectOfType<Token>();
+        token.SetTokenOwner(0);
+        Assert.AreEqual(Color.black, token.tokenMeshColor);
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-  
+    [Test]
+    public void TestSetTokenOwner1()//pueba de función de inicialización de la ficha
+    {
+        token = GameObject.FindObjectOfType<Token>();
+        token.SetTokenOwner(1);
+        Assert.AreEqual(Color.white, token.tokenMeshColor);
+    }
+
 }

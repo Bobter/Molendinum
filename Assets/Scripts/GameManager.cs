@@ -29,30 +29,58 @@ public class GameManager : MonoBehaviour
         board = GameObject.FindObjectOfType<Board>();
         spawnTokens();
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (Victory())
+        if (Victory())//si ya hay una victoria
         {
-            if (win != null) {
-                if (currentPlayerIndex == 0) win.color = Color.black;
-                else win.color = Color.white;
+            if (win != null) {//si existe el texxto de victoria
+                if (currentPlayerIndex == 0) win.color = Color.black;//si la victoria es del jugador 1 entonces el color del texto es negro, 
+                else win.color = Color.white;//si es del jugador 2 entonces el texto es blanco
                 win.gameObject.SetActive(true);
             }
-            return;
-        }else if(Input.GetKeyDown(KeyCode.Mouse0))
+        }else if(Input.GetKeyDown(KeyCode.Mouse0))//si no hay victoria y se preciona el click izquierdo del mouse
         {
-            if (makeMill) DeleteToken();
-            else SelecObject();
+            if (makeMill) DeleteToken();//si se hace un molino entonces se debe eliminar una ficha del oponente
+            else MoveToken();//si no se hace un molino entonces los jugadores deberán seguir colocando sus fichas en el tablero o moverlas por las casillas
         }
     }
 
-    public void NextTurn()
+    public void NextTurn()//cambia al turno siguiente
     {
         currentPlayerIndex = ((currentPlayerIndex +1)% 2);
     }
-    public void SelecObject()//función de selección del objeto
+    public bool Victory()//retorna verdadero si es que ya hay una victoria
+    {          //si el otro jugador que no es el actual tine 2 fichas o menos enotnces es una victoria para el jugador actual ,si no ocurre esto entonces no hay victoria
+        return (availableTokens[(currentPlayerIndex + 1) % 2] <= 2) ? true : false;
+    }
+    public void selectingNothing()//resetea los valores de los indices de movimiento , de la ficha seleccionada y de la casilla seleccionada
+    {
+        movementIndexes[0] = -1;
+        movementIndexes[1] = -1;
+        SelectedToken = null;
+        box = null;
+    }
+    private void spawnTokens()//instanciar las fichas con sus valores iniciales 
+    {
+        arrayToken = new Token[2, maxTokens];//crea una matriz de objetos de clase Token de tamaño 2 x maxTokens
+        for (int i = 0; i < (maxTokens * 2); i++)
+        {
+            Token player = Instantiate(TokenPrefab, gameObject.transform.position, Quaternion.identity);//se crea una casilla
+            player.gameObject.SetActive(false);//inicialmente se desactiva
+            if (i < maxTokens)//para la primera mitad de las fichas totales
+            {
+                player.SetTokenOwner(0);//serán del jguador 1
+                arrayToken[0, i] = player;//se guarda en el indice [0][i] de la matriz
+            }
+            else//para la segunda mitad de las fichas totales
+            {
+                player.SetTokenOwner(1);//serán del jguador 2
+                arrayToken[1, i - maxTokens] = player;//se guarda en el indice [1][i] de la matriz
+            }
+        }
+    }
+    public void MoveToken()//función de selección del objeto
     {
         RaycastHit hit;
         Ray mouseDirection = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -61,16 +89,15 @@ public class GameManager : MonoBehaviour
         {
             if (placedTokens[currentPlayerIndex]<maxTokens)//cuando el jugador del turno actual aún no coloca todas sus fichas 
             {
-                 if (hit.transform.CompareTag("box") )
+                 if (hit.transform.CompareTag("box") )//si selecciona una casilla
                 {
                     box = hit.transform.GetComponent<CheckboxStatus>();
                     SelectedToken= arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]];
-                    SelectedToken.activeToken(true);
+                    SelectedToken.gameObject.SetActive(true);
                     SelectedToken.transform.position =box.transform.position;
                     placedTokens[currentPlayerIndex] += 1;
                     movementIndexes[0] = currentPlayerIndex;
-                    movementIndexes[1] = box.checkboxIndex;
-                    Debug.Log("Jugador " + movementIndexes[0] + " coloca ficha en casilla " + movementIndexes[1]);  
+                    movementIndexes[1] = box.checkboxIndex; 
                 }
             }else//cuando ya tiene colocada las fichas en el tablero
             {
@@ -78,22 +105,18 @@ public class GameManager : MonoBehaviour
                 {
                     if (hit.transform.GetComponent<Token>().playerIndex == currentPlayerIndex) SelectedToken = hit.transform.GetComponent<Token>();
                 }
-                else if (hit.transform.CompareTag("box") && SelectedToken != null)//si selecciona una casilla y seleccionó antes la ficha a mover
+                else if (hit.transform.CompareTag("box") && SelectedToken != null)//si selecciona una casilla luego de seleccionar la ficha que quiere mover
                 {
-                    Debug.Log("mover a");
-                    box = hit.transform.GetComponent<CheckboxStatus>();
-                    movementIndexes[0] = SelectedToken.checkboxIndex;
-                    movementIndexes[1] = box.checkboxIndex;
-                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))StartCoroutine(SelectedToken.Move(box.transform.position));
-                }else selectingNothing();
+                    box = hit.transform.GetComponent<CheckboxStatus>();//se guarda la casilla
+                    movementIndexes[0] = SelectedToken.checkboxIndex;//se guarde el indice de la casilla actual del jugador 
+                    movementIndexes[1] = box.checkboxIndex;//se guarda la casilla a donde se quiere llegar
+                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))StartCoroutine(SelectedToken.Move(box.transform.position));//si es un movimineto válido entonces la ficha se mueve a la casilla seleccionada
+                    
+                }else selectingNothing();//si da click a otra parte del tablero entonces se restablecen los valoes guardados
             }
-        }
-        else selectingNothing();
+        }else selectingNothing();//si no choca con nada entonces se restablecen los valoes guardados
     }
-    public bool Victory()
-    {
-        return (availableTokens[(currentPlayerIndex+1)%2] <= 2)? true : false;
-    }
+   
     void DeleteToken()
     {
         RaycastHit hit;
@@ -101,45 +124,14 @@ public class GameManager : MonoBehaviour
         int deleteTokenIndex = (currentPlayerIndex + 1) % 2;
         if (Physics.Raycast(mouseDirection.origin, mouseDirection.direction, out hit, maxDistance))//si el rayo choca con algo
         {
-            if (hit.transform.CompareTag("token"))//si selecciona una fichaenemiga
-            {
-                Token deletedToken = hit.transform.GetComponent<Token>();
-                if (deletedToken.playerIndex == deleteTokenIndex)
-                {
-                    availableTokens[deleteTokenIndex] -= 1;
-                    deletedToken.Delete();
-                    makeMill = false;
-                    Debug.Log(currentPlayerIndex+"  DELETE ->"+deleteTokenIndex);
-                    if (!Victory())NextTurn();
-                    
-                }
+            Token deletedToken = hit.transform.GetComponent<Token>();
+            if (deletedToken.transform.CompareTag("token")&&deletedToken.playerIndex == deleteTokenIndex)//si selecciona una ficha 
+            {    
+                 availableTokens[deleteTokenIndex] -= 1;//se resta 1 a la cantidad de fichas del otro jugador
+                 deletedToken.Delete();//se elimina la ficha  seleccionada
+                 makeMill = false;// terminó la eliminación de la ficha 
+                 if (!Victory())NextTurn();//si es que no hay victoria entocnes sigue el turno del otro jugador
             }
         }     
-    }
-    public void selectingNothing()
-    {
-        movementIndexes[0]=-1;
-        movementIndexes[1]=-1;
-        SelectedToken = null;
-        box = null;
-    }
-    private void spawnTokens()
-    {
-        arrayToken= new Token[2,maxTokens] ;
-        for (int i = 0; i < (maxTokens*2); i++)
-        {
-            Token player1 = Instantiate(TokenPrefab, gameObject.transform.position, Quaternion.identity);
-            player1.activeToken(false);
-
-            if (i < maxTokens) {
-                player1.SetTokenOwner(0);
-                arrayToken[0, i] = player1;
-            }
-            else
-            {
-                player1.SetTokenOwner(1);
-                arrayToken[1, i-maxTokens] = player1;
-            }  
-        }
     }
 }
