@@ -23,4 +23,11 @@ public class GameManagerTest
         gameManager.availableTokens = new int[] {9,2};//jugador 1 tine 9 fichas , jugador 2 tiene 2 fichas 
         Assert.AreEqual(true, gameManager.Victory());
     }
+     [Test]
+     public void TestSpawnToken()
+     {
+         gameManager.spawnTokens();
+         Token t= gameManager.arrayToken[0,1];
+         Assert.AreEqual(0,t.playerIndex);
+     }
 }

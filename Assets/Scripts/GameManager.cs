@@ -7,10 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public int currentPlayerIndex;
     public int maxTokens = 9;
+    public bool twoPlayers=true;
     public float maxDistance;
     public CheckboxStatus SelectedCheckbox;
     public Token SelectedToken;
     public Token TokenPrefab;
+    public bool finishMoveToken=false;
     public int[] placedTokens = { 0, 0 };//contador de las fichas colocadas
     public int[] availableTokens = { 9, 9 };//contador de la cantidad de fichas activas
     public int []movementIndexes = { -1,-1 };//indice de la casilla de la ficha y de la casilla a la que se quiere desplazar
@@ -59,22 +61,22 @@ public class GameManager : MonoBehaviour
         SelectedToken = null;
         SelectedCheckbox = null;
     }
-    private void spawnTokens()//instanciar las fichas con sus valores iniciales 
+    public void spawnTokens()//instanciar las fichas con sus valores iniciales 
     {
         arrayToken = new Token[2, maxTokens];//crea una matriz de objetos de clase Token de tamaño 2 x maxTokens
         for (int i = 0; i < (maxTokens * 2); i++)
         {
-            Token player = Instantiate(TokenPrefab, gameObject.transform.position, Quaternion.identity);//se crea una casilla
-            player.gameObject.SetActive(false);//inicialmente se desactiva
+            Token token = Instantiate(TokenPrefab, gameObject.transform.position, Quaternion.identity);//se crea una casilla
+            token.gameObject.SetActive(false);//inicialmente se desactiva
             if (i < maxTokens)//para la primera mitad de las fichas totales
             {
-                player.SetTokenOwner(0);//serán del jguador 1
-                arrayToken[0, i] = player;//se guarda en el indice [0][i] de la matriz
+                token.SetTokenOwner(0);//serán del jguador 1
+                arrayToken[0, i] = token;//se guarda en el indice [0][i] de la matriz
             }
             else//para la segunda mitad de las fichas totales
             {
-                player.SetTokenOwner(1);//serán del jguador 2
-                arrayToken[1, i - maxTokens] = player;//se guarda en el indice [1][i] de la matriz
+                token.SetTokenOwner(1);//serán del jguador 2
+                arrayToken[1, i - maxTokens] = token;//se guarda en el indice [1][i] de la matriz
             }
         }
     }
@@ -92,10 +94,10 @@ public class GameManager : MonoBehaviour
                     SelectedCheckbox = hit.transform.GetComponent<CheckboxStatus>();
                     SelectedToken= arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]];
                     SelectedToken.gameObject.SetActive(true);
-                    SelectedToken.transform.position =SelectedCheckbox.transform.position;
+                    SelectedToken.transform.position = SelectedCheckbox.transform.position;
                     placedTokens[currentPlayerIndex] += 1;
                     movementIndexes[0] = currentPlayerIndex;
-                    movementIndexes[1] = SelectedCheckbox.checkboxIndex; 
+                    movementIndexes[1] = SelectedCheckbox.checkboxIndex;
                 }
             }else//cuando ya tiene colocada las fichas en el tablero
             {
@@ -122,9 +124,9 @@ public class GameManager : MonoBehaviour
         int deleteTokenIndex = (currentPlayerIndex + 1) % 2;
         if (Physics.Raycast(mouseDirection.origin, mouseDirection.direction, out hit, maxDistance))//si el rayo choca con algo
         {
-            Token deletedToken = hit.transform.GetComponent<Token>();
-            if (deletedToken.transform.CompareTag("token")&&deletedToken.playerIndex == deleteTokenIndex)//si selecciona una ficha 
-            {    
+            if (hit.transform.CompareTag("token")&& hit.transform.GetComponent<Token>().playerIndex == deleteTokenIndex)//si selecciona una ficha 
+            {
+                 Token deletedToken = hit.transform.GetComponent<Token>();
                  availableTokens[deleteTokenIndex] -= 1;//se resta 1 a la cantidad de fichas del otro jugador
                  deletedToken.Delete();//se elimina la ficha  seleccionada
                  makeMill = false;// terminó la eliminación de la ficha 

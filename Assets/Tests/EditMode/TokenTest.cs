@@ -12,11 +12,10 @@ public class TokenTest
     [Test]
     public void TestGetCurrentPlayer()//prueba de obtención del indice del jugador actual
     {   GM= GameObject.FindObjectOfType<GameManager>();
-        GM.currentPlayerIndex = 1;
+        GM.currentPlayerIndex = 0;
         token = GameObject.FindObjectOfType<Token>();
         token.gameManager = GM;
-        token.SetTokenOwner(1);
-        Assert.AreEqual(1,token.GetCurrentPlayer());
+        Assert.AreEqual(0,token.GetCurrentPlayer());
     }
     [Test]
     public void TestSetTokenOwner0()//pueba de función de inicialización de la ficha
