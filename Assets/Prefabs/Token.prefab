@@ -201,6 +201,8 @@ MonoBehaviour:
   checkboxIndex: 0
   SelectionEffect: {fileID: 3031268965473031155}
   timeTraslation: 0.5
+  tokenMeshColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  gameManager: {fileID: 0}
 --- !u!65 &7238203249116718894
 BoxCollider:
   m_ObjectHideFlags: 0

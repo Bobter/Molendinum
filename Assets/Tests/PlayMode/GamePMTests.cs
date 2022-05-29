@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.SceneManagement;
 
 public class GamePMTests
 {
-    [UnityTest]
-    public IEnumerator Mill()
-    {
 
-        yield return null;
-    }
 }

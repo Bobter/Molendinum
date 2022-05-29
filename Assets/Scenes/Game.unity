@@ -1485,7 +1485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771417208}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4, y: 3.3, z: 4}
+  m_LocalPosition: {x: -4, y: 3.3000002, z: 4}
   m_LocalScale: {x: 0.3, y: 0.01, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4225,12 +4225,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayerIndex: 0
   maxTokens: 9
-  twoPlayers: 0
   maxDistance: 1000
-  box: {fileID: 0}
+  SelectedCheckbox: {fileID: 0}
   SelectedToken: {fileID: 0}
   TokenPrefab: {fileID: 3031268966223927751, guid: fb6f134691a0ba447a17a741feef4de3, type: 3}
-  finishMoveToken: 0
   placedTokens: 0000000000000000
   availableTokens: 0900000009000000
   movementIndexes: ffffffffffffffff

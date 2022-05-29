@@ -7,9 +7,19 @@ public class Board : MonoBehaviour
     public CheckboxStatus[] Checkbox = new CheckboxStatus[24];
     public Vector3[] Coordinates = new Vector3[24];
 
+    // Start is called before the first frame update
     void Start()
     {
+        CheckboxAssignation();
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    public void CheckboxAssignation()
+    {
         //Capturamos las posiciones en un array
         for (int i = 0; i < 24; ++i)
         {

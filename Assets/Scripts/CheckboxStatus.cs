@@ -11,11 +11,11 @@ public class CheckboxStatus : MonoBehaviour
     public int tokenPlayerIndex;
     public Token currentToken;
     GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        checkboxAvailable = true;
-        tokenPlayerIndex = -1;
+        main();
         gameManager = GameObject.FindObjectOfType<GameManager>();
     }
     // Update is called once per frame
@@ -24,11 +24,16 @@ public class CheckboxStatus : MonoBehaviour
 
     }
 
+    public void main()
+    {
+        checkboxAvailable = true;
+        tokenPlayerIndex = -1;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.CompareTag("token") && checkboxAvailable == true && currentToken == null)
         {
-            Debug.Log("!LLEGO LA FICHA");
+            Debug.Log("LLEGO LA FICHA!");
             tokenPlayerIndex = other.gameObject.transform.GetComponent<Token>().playerIndex;
             Debug.Log("JUGADOR " + tokenPlayerIndex + ", POSICION " + checkboxIndex);
             if (gameManager.movementIndexes[1] == checkboxIndex)
