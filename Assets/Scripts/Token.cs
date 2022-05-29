@@ -9,7 +9,6 @@ public class Token : MonoBehaviour
     private GameManager gameManager;//adquiere el gameManager que hay en la escena
     int unplacedTokens;//variables extraida del manager que nos muestra cuantas fichas faltan colocar en el tablero
     CheckboxStatus currentCheckbox; 
-
     //variables públicas
     public int currentPlayerIndex;//indice del jugador del que es su turno
     public int playerIndex;//indice del jugador que usará la ficha
@@ -61,7 +60,7 @@ public class Token : MonoBehaviour
     private void OnMouseOver()
     {
        
-        if (playerIndex==GetCurrentPlayer()&&gameManager.placedTokens[playerIndex]>=gameManager.maxTokens)
+        if (playerIndex==GetCurrentPlayer()&&gameManager.placedTokens[playerIndex]==gameManager.maxTokens)
         {
             SelectionEffect.SetActive(true);
         }  
@@ -80,18 +79,16 @@ public class Token : MonoBehaviour
     {
         Vector3 startPosition = gameObject.transform.position;
         float currentTime = 0;
-        
-        //GetComponent<Collider>().enabled = false;
+
         while ((newPosition - gameObject.transform.position).magnitude >= 0.1f)
         {
             currentTime += Time.deltaTime;
             gameObject.transform.position = Vector3.Lerp(startPosition, newPosition, currentTime/timeTraslation);
             yield return null;
         }
-        //GetComponent<Collider>().enabled = true;
+
         gameObject.transform.position = newPosition;
         gameManager.selectingNothing();
-        gameManager.finishMoveToken = true;
         
     }
 
@@ -114,7 +111,6 @@ public class Token : MonoBehaviour
         currentCheckbox.checkboxAvailable = true;
         currentCheckbox.currentToken = null;
         checkboxIndex = -1;
-        gameManager.finishMoveToken = true;
         currentCheckbox = null;
         activeToken(false);
     }

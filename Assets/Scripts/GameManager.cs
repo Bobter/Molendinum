@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,9 +20,11 @@ public class GameManager : MonoBehaviour
     public bool makeMill;//es verdadero si se formó un molino en el turno y es falso cuando no
     public Logic rules;
     public Board board;
+    public Text win;
     // Start is called before the first frame update
     void Start()
     {
+        currentPlayerIndex = 0;
         rules = gameObject.GetComponent<Logic>();
         board = GameObject.FindObjectOfType<Board>();
         spawnTokens();
@@ -30,36 +33,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*Ray direction = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(direction.origin, direction.direction * maxDistance, Color.cyan);*/
         if (Victory())
         {
-            Time.timeScale = 0;
-            Debug.Log("VICTORYYYYYYYY");
+            if (win != null) {
+                if (currentPlayerIndex == 0) win.color = Color.black;
+                else win.color = Color.white;
+                win.gameObject.SetActive(true);
+            }
             return;
-        }
-        else if(Input.GetKeyDown(KeyCode.Mouse0))
+        }else if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (makeMill) DeleteToken();
             else SelecObject();
         }
-
-        if (finishMoveToken)
-        {/*
-            makeMill = rules.Mill(movementIndexes[1], board, currentPlayerIndex);
-            if (!makeMill) NextTurn();*/
-            finishMoveToken = false;
-        }
-
-        
-          
-       
     }
 
     public void NextTurn()
     {
         currentPlayerIndex = ((currentPlayerIndex +1)% 2);
-        //Debug.Log(rules.Mill(movementIndexes[1], board, currentPlayerIndex));
     }
     public void SelecObject()//función de selección del objeto
     {
@@ -68,7 +59,7 @@ public class GameManager : MonoBehaviour
 
         if (Physics.Raycast(mouseDirection.origin, mouseDirection.direction, out hit, maxDistance))//si el rayo choca con algo
         {
-            if (placedTokens[currentPlayerIndex]<9)//cuando el jugador del turno actual aún no coloca todas sus fichas 
+            if (placedTokens[currentPlayerIndex]<maxTokens)//cuando el jugador del turno actual aún no coloca todas sus fichas 
             {
                  if (hit.transform.CompareTag("box") )
                 {
@@ -97,15 +88,11 @@ public class GameManager : MonoBehaviour
                 }else selectingNothing();
             }
         }
-        else
-        {
-            selectingNothing();
-        }
-
+        else selectingNothing();
     }
     public bool Victory()
     {
-        return (availableTokens[currentPlayerIndex] <= 2)? true : false;
+        return (availableTokens[(currentPlayerIndex+1)%2] <= 2)? true : false;
     }
     void DeleteToken()
     {
@@ -123,7 +110,8 @@ public class GameManager : MonoBehaviour
                     deletedToken.Delete();
                     makeMill = false;
                     Debug.Log(currentPlayerIndex+"  DELETE ->"+deleteTokenIndex);
-                    if(!Victory()) NextTurn();
+                    if (!Victory())NextTurn();
+                    
                 }
             }
         }     
