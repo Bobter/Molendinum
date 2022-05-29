@@ -19,12 +19,63 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Hierarchy
-  m_RootView: {fileID: 7}
+  m_Title: Project
+  m_RootView: {fileID: 9}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: TestRunnerWindow
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 602
+    width: 439
+    height: 345
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 15}
+  m_Panes:
+  - {fileID: 15}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &3
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12010, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children:
+  - {fileID: 6}
+  - {fileID: 2}
+  m_Position:
+    serializedVersion: 2
+    x: 1481
+    y: 0
+    width: 439
+    height: 947
+  m_MinSize: {x: 100, y: 200}
+  m_MaxSize: {x: 8096, y: 16192}
+  vertical: 1
+  controlID: 724
+--- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,18 +90,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 945
+    x: 846
     y: 0
-    width: 654
+    width: 635
     height: 598
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 20}
   m_Panes:
-  - {fileID: 17}
+  - {fileID: 20}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &3
+--- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,8 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 10}
-  - {fileID: 4}
+  - {fileID: 12}
+  - {fileID: 3}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -74,34 +125,8 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 107
---- !u!114 &4
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 1
-  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Children: []
-  m_Position:
-    serializedVersion: 2
-    x: 1599
-    y: 0
-    width: 321
-    height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
-  m_Panes:
-  - {fileID: 14}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &5
+  controlID: 29
+--- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,16 +143,42 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 385
+    width: 439
+    height: 602
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
+  m_Panes:
+  - {fileID: 17}
+  m_Selected: 0
+  m_LastSelected: 0
+--- !u!114 &7
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Children: []
+  m_Position:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 324
     height: 598
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 18}
   m_Panes:
-  - {fileID: 15}
+  - {fileID: 18}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &6
+--- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,17 +195,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 598
-    width: 1599
+    width: 1481
     height: 349
   m_MinSize: {x: 231, y: 271}
   m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 13}
+  m_ActualView: {fileID: 16}
   m_Panes:
-  - {fileID: 13}
-  - {fileID: 18}
+  - {fileID: 16}
+  - {fileID: 21}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &7
+--- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,9 +218,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 8}
-  - {fileID: 3}
-  - {fileID: 9}
+  - {fileID: 10}
+  - {fileID: 5}
+  - {fileID: 11}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -182,7 +233,7 @@ MonoBehaviour:
   m_TopViewHeight: 30
   m_UseBottomView: 1
   m_BottomViewHeight: 20
---- !u!114 &8
+--- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,7 +255,7 @@ MonoBehaviour:
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
---- !u!114 &9
+--- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,7 +276,7 @@ MonoBehaviour:
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
---- !u!114 &10
+--- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,19 +289,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 11}
-  - {fileID: 6}
+  - {fileID: 13}
+  - {fileID: 8}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1599
+    width: 1481
     height: 947
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 80
---- !u!114 &11
+  controlID: 108
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,20 +314,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 5}
-  - {fileID: 12}
-  - {fileID: 2}
+  - {fileID: 7}
+  - {fileID: 14}
+  - {fileID: 4}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1599
+    width: 1481
     height: 598
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 81
---- !u!114 &12
+  controlID: 109
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,18 +342,987 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 385
+    x: 324
     y: 0
-    width: 560
+    width: 522
     height: 598
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 16}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &13
+--- !u!114 &15
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13401, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Test Runner
+    m_Image: {fileID: 0}
+    m_Tooltip: 
+  m_Pos:
+    serializedVersion: 2
+    x: 1481
+    y: 675
+    width: 438
+    height: 324
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+  m_Spl:
+    ID: 745
+    splitterInitialOffset: 182
+    currentActiveSplitter: -1
+    realSizes:
+    - 115
+    - 139
+    relativeSizes:
+    - 0.4527559
+    - 0.5472441
+    minSizes:
+    - 32
+    - 32
+    maxSizes:
+    - 0
+    - 0
+    lastTotalSize: 254
+    splitSize: 6
+    xOffset: 0
+    m_Version: 1
+    oldRealSizes: 
+    oldMinSizes: 
+    oldMaxSizes: 
+    oldSplitSize: 0
+  m_TestTypeToolbarIndex: 1
+  m_PlayModeTestListGUI:
+    m_Window: {fileID: 15}
+    m_NewResultList:
+    - id: 1010
+      uniqueId: '[NineMensMorris][suite]'
+      name: NineMensMorris
+      fullName: NineMensMorris
+      resultStatus: 1
+      duration: 0.1522713
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1013
+      uniqueId: '[PlayMode][E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/PlayMode.dll][suite]'
+      name: PlayMode.dll
+      fullName: E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/PlayMode.dll
+      resultStatus: 1
+      duration: 0.0363675
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1010
+      parentUniqueId: '[NineMensMorris][suite]'
+    - id: 1011
+      uniqueId: PlayMode.dll/[PlayMode][GamePMTests][suite]
+      name: GamePMTests
+      fullName: GamePMTests
+      resultStatus: 1
+      duration: 0.0273008
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1013
+      parentUniqueId: '[PlayMode][E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/PlayMode.dll][suite]'
+    - id: 1012
+      uniqueId: PlayMode.dll/GamePMTests/[PlayMode][GamePMTests.Mill]
+      name: Mill
+      fullName: GamePMTests.Mill
+      resultStatus: 1
+      duration: 0.0150819
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1011
+      parentUniqueId: PlayMode.dll/[PlayMode][GamePMTests][suite]
+    m_ResultText: 
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 4748388692b842b7af36827dffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+    m_SelectedOption: 0
+  m_EditModeTestListGUI:
+    m_Window: {fileID: 15}
+    m_NewResultList:
+    - id: 1000
+      uniqueId: '[NineMensMorris][suite]'
+      name: NineMensMorris
+      fullName: NineMensMorris
+      resultStatus: 1
+      duration: 0.1068734
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 
+      parentUniqueId: 
+    - id: 1006
+      uniqueId: '[EditMode][E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/EditMode.dll][suite]'
+      name: EditMode.dll
+      fullName: E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/EditMode.dll
+      resultStatus: 1
+      duration: 0.0855131
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1000
+      parentUniqueId: '[NineMensMorris][suite]'
+    - id: 1001
+      uniqueId: EditMode.dll/[EditMode][GameEMTests][suite]
+      name: GameEMTests
+      fullName: GameEMTests
+      resultStatus: 1
+      duration: 0.0321755
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1006
+      parentUniqueId: '[EditMode][E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/EditMode.dll][suite]'
+    - id: 1002
+      uniqueId: EditMode.dll/GameEMTests/[EditMode][GameEMTests.Mill]
+      name: Mill
+      fullName: GameEMTests.Mill
+      resultStatus: 1
+      duration: 0.0108513
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: EditMode.dll/[EditMode][GameEMTests][suite]
+    - id: 1003
+      uniqueId: EditMode.dll/[EditMode][GameManagerTest][suite]
+      name: GameManagerTest
+      fullName: GameManagerTest
+      resultStatus: 1
+      duration: 0.0169197
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1014
+      parentUniqueId: '[EditMode][E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/EditMode.dll][suite]'
+    - id: 1004
+      uniqueId: EditMode.dll/GameManagerTest/[EditMode][GameManagerTest.TestNexturn]
+      name: TestNexturn
+      fullName: GameManagerTest.TestNexturn
+      resultStatus: 1
+      duration: 0.0115947
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: EditMode.dll/[EditMode][GameManagerTest][suite]
+    - id: 1005
+      uniqueId: EditMode.dll/GameManagerTest/[EditMode][GameManagerTest.TestVictory]
+      name: TestVictory
+      fullName: GameManagerTest.TestVictory
+      resultStatus: 1
+      duration: 0.0010683
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: EditMode.dll/[EditMode][GameManagerTest][suite]
+    - id: 1003
+      uniqueId: EditMode.dll/[EditMode][LogicTest][suite]
+      name: LogicTest
+      fullName: LogicTest
+      resultStatus: 1
+      duration: 0.0304898
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1011
+      parentUniqueId: '[EditMode][E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/EditMode.dll][suite]'
+    - id: 1008
+      uniqueId: EditMode.dll/LogicTest/[EditMode][LogicTest.canMove]
+      name: canMove
+      fullName: LogicTest.canMove
+      resultStatus: 1
+      duration: 0.007153
+      messages: 
+      output: 'You are trying to create a MonoBehaviour using the ''new'' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: EditMode.dll/[EditMode][LogicTest][suite]
+    - id: 1007
+      uniqueId: EditMode.dll/LogicTest/[EditMode][LogicTest.Fly]
+      name: Fly
+      fullName: LogicTest.Fly
+      resultStatus: 1
+      duration: 0.0002444
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: EditMode.dll/[EditMode][LogicTest][suite]
+    - id: 1004
+      uniqueId: EditMode.dll/LogicTest/[EditMode][LogicTest.hasaMill]
+      name: hasaMill
+      fullName: LogicTest.hasaMill
+      resultStatus: 1
+      duration: 0.0080207
+      messages: 
+      output: 'You are trying to create a MonoBehaviour using the ''new'' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        =====================================================================================
+
+        SECOND
+        IF PASSED
+
+        VERTICAL || SECOND IF PASSED
+
+        VERTICAL || ------POSITION-------:23
+
+        Molino
+        formado por [0; 0; 0]
+
+        Molino formado en las posiciones [2; 14;
+        23]
+
+        ====================================================================================
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: EditMode.dll/[EditMode][LogicTest][suite]
+    - id: 1005
+      uniqueId: EditMode.dll/LogicTest/[EditMode][LogicTest.NOhasaMill]
+      name: NOhasaMill
+      fullName: LogicTest.NOhasaMill
+      resultStatus: 1
+      duration: 0.0054986
+      messages: 
+      output: 'You are trying to create a MonoBehaviour using the ''new'' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: EditMode.dll/[EditMode][LogicTest][suite]
+    - id: 1006
+      uniqueId: EditMode.dll/LogicTest/[EditMode][LogicTest.NOValidMovement]
+      name: NOValidMovement
+      fullName: LogicTest.NOValidMovement
+      resultStatus: 1
+      duration: 0.005384
+      messages: 
+      output: 'You are trying to create a MonoBehaviour using the ''new'' keyword. 
+        This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+        You are trying to create a MonoBehaviour using the ''new''
+        keyword.  This is not allowed.  MonoBehaviours can only be added using AddComponent().
+        Alternatively, your script can inherit from ScriptableObject or no base class
+        at all
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1003
+      parentUniqueId: EditMode.dll/[EditMode][LogicTest][suite]
+    - id: 1003
+      uniqueId: EditMode.dll/[EditMode][TokenTest][suite]
+      name: TokenTest
+      fullName: TokenTest
+      resultStatus: 1
+      duration: 0.0045235
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1006
+      parentUniqueId: '[EditMode][E:/ReposGitHub/Molendinum/Library/ScriptAssemblies/EditMode.dll][suite]'
+    - id: 1010
+      uniqueId: EditMode.dll/TokenTest/[EditMode][TokenTest.TestGetCurrentPlayer]
+      name: TestGetCurrentPlayer
+      fullName: TokenTest.TestGetCurrentPlayer
+      resultStatus: 1
+      duration: 0.0003577
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1009
+      parentUniqueId: EditMode.dll/[EditMode][TokenTest][suite]
+    - id: 1014
+      uniqueId: EditMode.dll/TokenTest/[EditMode][TokenTest.TestSetTokenOwner0]
+      name: TestSetTokenOwner0
+      fullName: TokenTest.TestSetTokenOwner0
+      resultStatus: 1
+      duration: 0.0003072
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: EditMode.dll/[EditMode][TokenTest][suite]
+    - id: 1015
+      uniqueId: EditMode.dll/TokenTest/[EditMode][TokenTest.TestSetTokenOwner1]
+      name: TestSetTokenOwner1
+      fullName: TokenTest.TestSetTokenOwner1
+      resultStatus: 1
+      duration: 0.0001748
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: EditMode.dll/[EditMode][TokenTest][suite]
+    m_ResultText: GameEMTests (0.032s)
+    m_ResultStacktrace: 
+    m_TestListState:
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 7ce8325c
+      m_LastClickedID: 1546840188
+      m_ExpandedIDs: 47483886f2469e94ffffff7f
+      m_RenameOverlay:
+        m_UserAcceptedRename: 0
+        m_Name: 
+        m_OriginalName: 
+        m_EditFieldRect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        m_UserData: 0
+        m_IsWaitingForDelay: 0
+        m_IsRenaming: 0
+        m_OriginalEventType: 11
+        m_IsRenamingFilename: 0
+        m_ClientGUIView: {fileID: 0}
+      m_SearchString: 
+    m_TestRunnerUIFilter:
+      PassedHidden: 0
+      FailedHidden: 0
+      NotRunHidden: 0
+      m_SearchString: 
+      selectedCategoryMask: 0
+      availableCategories:
+      - Uncategorized
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,7 +1344,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 671
-    width: 1598
+    width: 1480
     height: 328
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -343,38 +1363,38 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\ReposGitHub\Molendinum
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 36620000
-    m_LastClickedID: 25142
-    m_ExpandedIDs: 0000000010620000126200001462000000ca9a3b
+    m_SelectedIDs: 4c620000
+    m_LastClickedID: 25164
+    m_ExpandedIDs: 000000002a6200002c6200002e62000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Sprites
+      m_OriginalName: Sprites
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 25168
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 6}
+      m_ClientGUIView: {fileID: 8}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -386,7 +1406,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000106200001262000014620000
+    m_ExpandedIDs: 000000002a6200002c6200002e620000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -430,7 +1450,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 8}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -442,7 +1462,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
---- !u!114 &14
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -462,10 +1482,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1599
+    x: 1481
     y: 73
-    width: 320
-    height: 926
+    width: 438
+    height: 581
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -483,7 +1503,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
---- !u!114 &15
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -505,7 +1525,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 73
-    width: 384
+    width: 323
     height: 577
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -516,7 +1536,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 02baffff28fbffff
+      m_ExpandedIDs: c06fffff0670ffffe075ffff4879ffffb87affff967effff4280ffffb88cffff448effffd48fffff2099ffffb09dfffff29dffffb09effffb6a1ffff3ca3ffffc8a4ffff08a6ffff4aa6ffff08a8ffff08acffffb8acffff36aeffff60b0ffff96b0ffffc8b2ffff6eb3ffffe8b4ffffd8b7ffff40baffffdebbffff70bdfffff8beffffb6c4ffffeec4ffff9ec5fffff6c6ffff42c7ffff2ccbffff76cbffff20ccffff42cdffff98cdfffff0cdffff9acfffffeed1ffff84d2ffff46d4ffff32d8ffffa8d9ffff2adcffffbadcffff46ddffffd6ddffff6adeffff04e0ffff44e1ffffb8e1ffff06e5ffff3ce7ffffa6e8ffffacebffff7ef0fffff2f0ffff96f1ffff32f8fffff8f8ffff9cf9ffff0cfaffff28fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -532,7 +1552,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 5}
+        m_ClientGUIView: {fileID: 7}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -540,7 +1560,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 4c969a2b90040154d917609493e03593
---- !u!114 &16
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -560,9 +1580,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 385
+    x: 324
     y: 73
-    width: 558
+    width: 520
     height: 577
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -787,9 +1807,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.4609199, y: 178.37837, z: -13.2808895}
+    m_Target: {x: -340.08426, y: 9.056995, z: 1.6024475}
     speed: 2
-    m_Value: {x: 0.4609199, y: 178.37837, z: -13.2808895}
+    m_Value: {x: -340.08426, y: 9.056995, z: 1.6024475}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -836,13 +1856,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.52299815, y: 0.017896215, z: -0.010984575, w: 0.8520752}
+    m_Target: {x: 0.3783644, y: -0.044405833, z: 0.018175365, w: 0.92441446}
     speed: 2
-    m_Value: {x: 0.5229981, y: 0.017896213, z: -0.010984574, w: 0.8520751}
+    m_Value: {x: 0.3783637, y: -0.044405747, z: 0.01817533, w: 0.92441267}
   m_Size:
-    m_Target: 136.47543
+    m_Target: 92.68037
     speed: 2
-    m_Value: 130.5985
+    m_Value: 92.68037
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -867,7 +1887,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &17
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -887,9 +1907,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 945
+    x: 846
     y: 73
-    width: 652
+    width: 633
     height: 577
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -937,10 +1957,10 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 652
+      width: 633
       height: 556
-    m_Scale: {x: 0.33958334, y: 0.33958334}
-    m_Translation: {x: 326, y: 278}
+    m_Scale: {x: 0.3296875, y: 0.3296875}
+    m_Translation: {x: 316.5, y: 278}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -948,18 +1968,18 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -960
-      y: -818.65027
+      y: -843.2227
       width: 1920
-      height: 1637.3005
+      height: 1686.4454
     m_MinimalGUI: 1
-  m_defaultScale: 0.33958334
-  m_LastWindowPixelSize: {x: 652, y: 577}
+  m_defaultScale: 0.3296875
+  m_LastWindowPixelSize: {x: 633, y: 577}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
   m_XRRenderMode: 0
   m_RenderTexture: {fileID: 0}
---- !u!114 &18
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -981,7 +2001,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 671
-    width: 1598
+    width: 1480
     height: 328
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

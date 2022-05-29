@@ -25,7 +25,6 @@ public class TokenTest
         token.SetTokenOwner(0);
         Assert.AreEqual(Color.black, token.tokenMeshColor);
     }
-
     [Test]
     public void TestSetTokenOwner1()//pueba de función de inicialización de la ficha
     {
@@ -33,5 +32,4 @@ public class TokenTest
         token.SetTokenOwner(1);
         Assert.AreEqual(Color.white, token.tokenMeshColor);
     }
-
 }

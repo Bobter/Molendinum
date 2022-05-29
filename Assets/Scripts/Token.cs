@@ -25,9 +25,8 @@ public class Token : MonoBehaviour
     {
         return gameManager.currentPlayerIndex;
     }
-
     private void OnMouseOver()
-    {    //si es el turno del jugaodr actual , si ya se pusieron todas las fichas en el tablero y si no se formó un molino
+    {    //si la ficha es del jugador del turno actual , si ya se pusieron todas las fichas en el tablero y si no se formó un molino
         if (playerIndex == GetCurrentPlayer() && gameManager.placedTokens[playerIndex] == gameManager.maxTokens && !gameManager.makeMill)
             SelectionEffect.SetActive(true); //entonces activará el efecto del círculo al pasar el cursor sobre la ficha
 
@@ -36,7 +35,7 @@ public class Token : MonoBehaviour
     {
         SelectionEffect.SetActive(false);//desactuva el efecto del círculo cuando quitamos el cursor de la ficha
     }
-    public void SetTokenOwner(int index)//asigna la propiedades iniciales de la ficha y la crea con un color según el indice del jugador al que pertenezca 
+    public void SetTokenOwner(int index)//asigna la propiedades iniciales de la ficha y guarda un color según el indice del jugador al que pertenezca 
     {
         playerIndex = index; 
         checkboxIndex = -1;//este -1 significa que aún no está en una casilla
@@ -53,13 +52,13 @@ public class Token : MonoBehaviour
     public IEnumerator Move(Vector3 newPosition)
     {
         Vector3 startPosition = gameObject.transform.position;
-        float currentTime = 0;
+        float time = 0;
 
-        while ((newPosition - gameObject.transform.position).magnitude >= 0.1f)
+        while ((newPosition - gameObject.transform.position).magnitude >= 0.1f)//si se encuentra a una distancia mayora a 0.1 unidades
         {
-            currentTime += Time.deltaTime;
-            gameObject.transform.position = Vector3.Lerp(startPosition, newPosition, currentTime/timeTraslation);
-            yield return null;
+            time += Time.deltaTime;
+            gameObject.transform.position = Vector3.Lerp(startPosition, newPosition, time/timeTraslation);//se interpola la pocisión actual hacia el destino
+            yield return null;//continúa en el siguiente frame
         }
         gameObject.transform.position = newPosition;
         gameManager.selectingNothing();
