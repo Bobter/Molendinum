@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class Logic : MonoBehaviour
 {       
-    //Definiendo MOLINOS y VECINOS
+    //Definiendo MOLINOS Horizontales
     public List<int[]> MolendinumH = new List<int[]>();
+    //Definiendo MOLINOS Verticales
     public List<int[]> MolendinumV = new List<int[]>();
     //Definiendo VECINOS
     public int[,] Neighbour = {{1,9,0,0},   //0
@@ -126,5 +127,4 @@ public class Logic : MonoBehaviour
 
         return false;
     }
-
 }
