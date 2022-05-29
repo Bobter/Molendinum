@@ -35,7 +35,9 @@ public class LogicTest
         boardTest.Checkbox[14].tokenPlayerIndex = 0;
         boardTest.Checkbox[23].tokenPlayerIndex = 0;
         int end = 23;
-        Assert.AreEqual(true, logicTest.Mill(end, boardTest, 0));
+        //Siendo el turno de 0
+        int CurrentPlayer = 0;
+        Assert.AreEqual(true, logicTest.Mill(end, boardTest, CurrentPlayer));
     }
 
     [Test]
@@ -59,7 +61,9 @@ public class LogicTest
         boardTest.Checkbox[1].tokenPlayerIndex = 0;
         boardTest.Checkbox[2].tokenPlayerIndex = 0;
         int end = 0;
-        Assert.AreEqual(false, logicTest.Mill(end, boardTest, 1));
+        //Siendo el turno de 1
+        int CurrentPlayer = 1;
+        Assert.AreEqual(false, logicTest.Mill(end, boardTest, CurrentPlayer));
     }
     [Test]
     //Movimiento hacia una casilla ocupada
@@ -82,7 +86,8 @@ public class LogicTest
         //Casilla final ocupada por el jugador 0
         boardTest.Checkbox[end].tokenPlayerIndex = 0;
         //Siendo el turno de 1
-        Assert.AreEqual(false, logicTest.ValidMovement(begin, end, boardTest, 1));
+        int CurrentPlayer = 1;
+        Assert.AreEqual(false, logicTest.ValidMovement(begin, end, boardTest, CurrentPlayer));
     }
 
     [Test]
