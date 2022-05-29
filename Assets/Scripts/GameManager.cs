@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public int maxTokens = 9;
     public bool twoPlayers=true;
     public float maxDistance;
-    public CheckboxStatus box;
+    public CheckboxStatus SelectedCheckbox;
     public Token SelectedToken;
     public Token TokenPrefab;
     public bool finishMoveToken=false;
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         movementIndexes[0] = -1;
         movementIndexes[1] = -1;
         SelectedToken = null;
-        box = null;
+        SelectedCheckbox = null;
     }
     public void spawnTokens()//instanciar las fichas con sus valores iniciales 
     {
@@ -91,17 +91,13 @@ public class GameManager : MonoBehaviour
             {
                  if (hit.transform.CompareTag("box") )//si selecciona una casilla
                 {
-                    box = hit.transform.GetComponent<CheckboxStatus>();
+                    SelectedCheckbox = hit.transform.GetComponent<CheckboxStatus>();
                     SelectedToken= arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]];
                     SelectedToken.gameObject.SetActive(true);
-                    SelectedToken.transform.position =box.transform.position;
+                    SelectedToken.transform.position = SelectedCheckbox.transform.position;
                     placedTokens[currentPlayerIndex] += 1;
-<<<<<<< Updated upstream
                     movementIndexes[0] = currentPlayerIndex;
-                    movementIndexes[1] = box.checkboxIndex; 
-=======
-                    movementIndexes[1] = SelectedCheckbox.checkboxIndex; 
->>>>>>> Stashed changes
+                    movementIndexes[1] = SelectedCheckbox.checkboxIndex;
                 }
             }else//cuando ya tiene colocada las fichas en el tablero
             {
@@ -111,10 +107,10 @@ public class GameManager : MonoBehaviour
                 }
                 else if (hit.transform.CompareTag("box") && SelectedToken != null)//si selecciona una casilla luego de seleccionar la ficha que quiere mover
                 {
-                    box = hit.transform.GetComponent<CheckboxStatus>();//se guarda la casilla
+                    SelectedCheckbox = hit.transform.GetComponent<CheckboxStatus>();//se guarda la casilla
                     movementIndexes[0] = SelectedToken.checkboxIndex;//se guarde el indice de la casilla actual del jugador 
-                    movementIndexes[1] = box.checkboxIndex;//se guarda la casilla a donde se quiere llegar
-                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))StartCoroutine(SelectedToken.Move(box.transform.position));//si es un movimineto válido entonces la ficha se mueve a la casilla seleccionada
+                    movementIndexes[1] = SelectedCheckbox.checkboxIndex;//se guarda la casilla a donde se quiere llegar
+                    if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))StartCoroutine(SelectedToken.Move(SelectedCheckbox.transform.position));//si es un movimineto válido entonces la ficha se mueve a la casilla seleccionada
                     
                 }else selectingNothing();//si da click a otra parte del tablero entonces se restablecen los valoes guardados
             }
