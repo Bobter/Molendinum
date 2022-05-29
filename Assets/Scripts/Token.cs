@@ -44,7 +44,7 @@ public class Token : MonoBehaviour
         {
             tokenMeshColor = Color.white;//se guarda el color blanco
         }
-        gameObject.GetComponent<MeshRenderer>().material.color = tokenMeshColor;//se le añade el color guardado
+        if(gameObject.GetComponent<MeshRenderer>()!=null) gameObject.GetComponent<MeshRenderer>().material.color = tokenMeshColor;//se le añade el color guardado
         selected = false;//al principio ,ninguna ficha está seleccionada
     }
     public bool CanMoveToken()//función que retorna si se puede mover o no la ficha 

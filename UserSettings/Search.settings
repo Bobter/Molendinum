@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-{}
-=======
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-{}
-=======
->>>>>>> Stashed changes
 trackSelection = true
 fetchPreview = true
 wantsMore = false
@@ -16,6 +7,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+	"last_search.8440E7BB" = "test run"
+	"OpenInspectorPreview.8440E7BB" = "0"
+	"currentGroup.8440E7BB" = "all"
 }
 providers = {
 	adb = {
@@ -70,10 +64,4 @@ expandedQueries = [
 queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"
-<<<<<<< Updated upstream
 disabledIndexers = ""
-=======
-disabledIndexers = ""
->>>>>>> main
->>>>>>> Stashed changes
->>>>>>> main
