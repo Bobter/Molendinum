@@ -42,7 +42,6 @@ public class Token : MonoBehaviour
         if (playerIndex == 0)//si el jugador tiene el indice 0 entonces la ficha es de color negro
         {
             tokenMeshColor = Color.black;//se guarda el color negro
-
         }
         else if (playerIndex == 1)//si el jugador tiene el indice 1 entonces la ficha es de color blanco
         {
