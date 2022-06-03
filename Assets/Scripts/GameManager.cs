@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Logic rules;
     public Board board;
     public Text win;
+    public bool movingToken=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +40,13 @@ public class GameManager : MonoBehaviour
                 else win.color = Color.white;//si es del jugador 2 entonces el texto es blanco
                 win.gameObject.SetActive(true);
             }
-        }else if(Input.GetKeyDown(KeyCode.Mouse0))//si no hay victoria y se preciona el click izquierdo del mouse
+        }else if(Input.GetKeyDown(KeyCode.Mouse0)&&!movingToken)//si no hay victoria y se preciona el click izquierdo del mouse
         {
             if (makeMill) DeleteToken();//si se hace un molino entonces se debe eliminar una ficha del oponente
             else MoveToken();//si no se hace un molino entonces los jugadores deberán seguir colocando sus fichas en el tablero o moverlas por las casillas
         }
     }
-
+    
     public void NextTurn()//cambia al turno siguiente
     {
         currentPlayerIndex = ((currentPlayerIndex +1)% 2);

@@ -52,13 +52,14 @@ public class Token : MonoBehaviour
     {
         Vector3 startPosition = gameObject.transform.position;
         float time = 0;
-
+        gameManager.movingToken = true;
         while ((newPosition - gameObject.transform.position).magnitude >= 0.1f)//si se encuentra a una distancia mayora a 0.1 unidades
         {
             time += Time.deltaTime;
             gameObject.transform.position = Vector3.Lerp(startPosition, newPosition, time/timeTraslation);//se interpola la pocisión actual hacia el destino
             yield return null;//continúa en el siguiente frame
         }
+        gameManager.movingToken = false;
         gameObject.transform.position = newPosition;
         gameManager.selectingNothing();
         
