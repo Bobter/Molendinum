@@ -21,14 +21,17 @@ public class GameManager : MonoBehaviour
     public Logic rules;
     public Board board;
     public Text win;
-    public bool movingToken=false;
+    public bool movingToken=false;//es verdadero si la ficha está moviendose de una casilla a otra
+    TokenSpawner tokenSpawner;
     // Start is called before the first frame update
     void Start()
     {
         currentPlayerIndex = 0;
         rules = gameObject.GetComponent<Logic>();
         board = GameObject.FindObjectOfType<Board>();
-        spawnTokens();
+        tokenSpawner = gameObject.GetComponent<TokenSpawner>();
+        arrayToken=tokenSpawner.spawnTokens(maxTokens);
+        //spawnTokens();
     }
     // Update is called once per frame
     void Update()
@@ -43,7 +46,14 @@ public class GameManager : MonoBehaviour
         }else if(Input.GetKeyDown(KeyCode.Mouse0)&&!movingToken)//si no hay victoria y se preciona el click izquierdo del mouse
         {
             if (makeMill) DeleteToken();//si se hace un molino entonces se debe eliminar una ficha del oponente
-            else MoveToken();//si no se hace un molino entonces los jugadores deberán seguir colocando sus fichas en el tablero o moverlas por las casillas
+            else
+            {
+                if (placedTokens[currentPlayerIndex] < maxTokens)
+                    PlaceToken();//si no se hace un molino entonces los jugadores deberán seguir colocando sus fichas en el tablero
+                else
+                    MoveToken();//si no se hace un molino entonces los jugadores deberán seguir  moviendo sus fichas por las casillas
+
+            }           
         }
     }
     
@@ -87,7 +97,7 @@ public class GameManager : MonoBehaviour
         Ray mouseDirection = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(mouseDirection.origin, mouseDirection.direction, out hit, maxDistance))//si el rayo choca con algo
-        {
+        {    /*  
             if (placedTokens[currentPlayerIndex]<maxTokens)//cuando el jugador del turno actual aún no coloca todas sus fichas 
             {
                  if (hit.transform.CompareTag("box") )//si selecciona una casilla
@@ -100,8 +110,8 @@ public class GameManager : MonoBehaviour
                     movementIndexes[0] = currentPlayerIndex;
                     movementIndexes[1] = SelectedCheckbox.checkboxIndex;
                 }
-            }else//cuando ya tiene colocada las fichas en el tablero
-            {
+            }else//cuando ya tiene colocada las fichas en el tablero        */
+            //{
                 if (hit.transform.CompareTag("token"))//si selecciona una ficha
                 {
                     if (hit.transform.GetComponent<Token>().playerIndex == currentPlayerIndex) SelectedToken = hit.transform.GetComponent<Token>();
@@ -114,10 +124,33 @@ public class GameManager : MonoBehaviour
                     if (rules.ValidMovement(movementIndexes[0], movementIndexes[1],board,currentPlayerIndex))StartCoroutine(SelectedToken.Move(SelectedCheckbox.transform.position));//si es un movimineto válido entonces la ficha se mueve a la casilla seleccionada
                     
                 }else selectingNothing();//si da click a otra parte del tablero entonces se restablecen los valoes guardados
-            }
+            //}
         }else selectingNothing();//si no choca con nada entonces se restablecen los valoes guardados
     }
    
+    void PlaceToken()//cuando el jugador del turno actual aún no coloca todas sus fichas 
+    {
+        RaycastHit hit;
+        Ray mouseDirection = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(mouseDirection.origin, mouseDirection.direction, out hit, maxDistance))//si el rayo choca con algo
+        {
+            //if (placedTokens[currentPlayerIndex] < maxTokens)
+            //{//cuando el jugador del turno actual aún no coloca todas sus fichas 
+
+                if (hit.transform.CompareTag("box"))//si selecciona una casilla
+                {
+                    SelectedCheckbox = hit.transform.GetComponent<CheckboxStatus>();
+                    SelectedToken = arrayToken[currentPlayerIndex, placedTokens[currentPlayerIndex]];
+                    SelectedToken.gameObject.SetActive(true);
+                    SelectedToken.transform.position = SelectedCheckbox.transform.position;
+                    placedTokens[currentPlayerIndex] += 1;
+                    movementIndexes[0] = currentPlayerIndex;
+                    movementIndexes[1] = SelectedCheckbox.checkboxIndex;
+                }
+            //}
+        }
+    }
     void DeleteToken()
     {
         RaycastHit hit;
