@@ -96,7 +96,6 @@ public class GameManager : MonoBehaviour
     }
     public void MoveToken()//función de selección del objeto
     {
-
         GameObject select = selector.SelectObject(currentPlayerIndex,maxDistance);//se guarda el objeto seleccionado
         
                 if (select.transform.CompareTag("token"))//si selecciona una ficha
@@ -126,7 +125,6 @@ public class GameManager : MonoBehaviour
              movementIndexes[0] = currentPlayerIndex;
              movementIndexes[1] = SelectedCheckbox.checkboxIndex;
         }
-        
     }
     void DeleteToken()
     {
