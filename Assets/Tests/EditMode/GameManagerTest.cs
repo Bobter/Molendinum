@@ -23,11 +23,12 @@ public class GameManagerTest
         gameManager.availableTokens = new int[] {9,2};//jugador 1 tine 9 fichas , jugador 2 tiene 2 fichas 
         Assert.AreEqual(true, gameManager.Victory());
     }
+    /*
      [Test]
      public void TestSpawnToken()//prueba de generación de las fichas 
      {
          gameManager.maxTokens = 10; //cantidad máxima de fichas por jugador
          gameManager.spawnTokens();//instancia todas las fichas
          Assert.AreEqual(20,gameManager.arrayToken.Length);
-     }
+     }*/
 }

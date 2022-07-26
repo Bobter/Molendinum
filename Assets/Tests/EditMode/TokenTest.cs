@@ -14,8 +14,8 @@ public class TokenTest
     {   GM= GameObject.FindObjectOfType<GameManager>();
         GM.currentPlayerIndex = 0;
         token = GameObject.FindObjectOfType<Token>();
-        token.gameManager = GM;
-        Assert.AreEqual(0,token.GetCurrentPlayer());
+        //token.gameManager = GM;
+        Assert.AreEqual(0,token.currentPlayerIndex);
     }
     [Test]
     public void TestSetTokenOwner0()//pueba de función de inicialización de la ficha

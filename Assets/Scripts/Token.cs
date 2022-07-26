@@ -10,8 +10,9 @@ public class Token : MonoBehaviour
     public GameObject SelectionEffect;//hace referencia an círculo que es un objeto hijo de la ficha, este círculo sirve par amostrar si la ficha está siendo seleccionada
     public float timeTraslation;//timepo que demorará en moverse de un lado a otro
     public Color tokenMeshColor;//guarda el color de la ficha 
-    public GameManager gameManager;//adquiere el gameManager que hay en la escena
-    private CheckboxStatus currentCheckbox;//casilla en la que se encuentra actualmente
+   
+    GameManager gameManager;//adquiere el gameManager que hay en la escena
+    CheckboxStatus currentCheckbox;//casilla en la que se encuentra actualmente
 
     void Start()
     {
@@ -20,16 +21,11 @@ public class Token : MonoBehaviour
         currentPlayerIndex = gameManager.currentPlayerIndex;//
         if (gameObject.GetComponent<MeshRenderer>() != null) gameObject.GetComponent<MeshRenderer>().material.color = tokenMeshColor;//cumprueba si el objeto tiene el elemento MeshRenderer par aluego colocar el color asignado
     }
-    // Update is called once per frame
-    public int GetCurrentPlayer()
-    {
-        return gameManager.currentPlayerIndex;
-    }
+
     private void OnMouseOver()
     {    //si la ficha es del jugador del turno actual , si ya se pusieron todas las fichas en el tablero y si no se formó un molino
-        if (playerIndex == GetCurrentPlayer() && gameManager.placedTokens[playerIndex] == gameManager.maxTokens && !gameManager.makeMill)
+        if (playerIndex == currentPlayerIndex && gameManager.placedTokens[playerIndex] == gameManager.maxTokens && !gameManager.makeMill)
             SelectionEffect.SetActive(true); //entonces activará el efecto del círculo al pasar el cursor sobre la ficha
-
     }
     private void OnMouseExit()
     {
@@ -40,13 +36,9 @@ public class Token : MonoBehaviour
         playerIndex = index; 
         checkboxIndex = -1;//este -1 significa que aún no está en una casilla
         if (playerIndex == 0)//si el jugador tiene el indice 0 entonces la ficha es de color negro
-        {
             tokenMeshColor = Color.black;//se guarda el color negro
-        }
         else if (playerIndex == 1)//si el jugador tiene el indice 1 entonces la ficha es de color blanco
-        {
             tokenMeshColor = Color.white;//se guarda el color blanco
-        }
     }
     public IEnumerator Move(Vector3 newPosition)
     {

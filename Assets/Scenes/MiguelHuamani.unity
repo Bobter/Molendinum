@@ -4208,6 +4208,8 @@ GameObject:
   - component: {fileID: 1815977158}
   - component: {fileID: 1815977157}
   - component: {fileID: 1815977159}
+  - component: {fileID: 1815977160}
+  - component: {fileID: 1815977161}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4229,19 +4231,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPlayerIndex: 0
   maxTokens: 9
-  twoPlayers: 0
-  maxDistance: 1000
-  box: {fileID: 0}
-  SelectedToken: {fileID: 0}
-  TokenPrefab: {fileID: 3031268966223927751, guid: fb6f134691a0ba447a17a741feef4de3, type: 3}
-  finishMoveToken: 0
   placedTokens: 0000000000000000
   availableTokens: 0900000009000000
   movementIndexes: ffffffffffffffff
+  twoPlayers: 0
+  movingToken: 0
   makeMill: 0
+  tokenPrefab: {fileID: 0}
   rules: {fileID: 0}
   board: {fileID: 0}
-  win: {fileID: 1786096628}
+  winTextUI: {fileID: 1786096628}
 --- !u!4 &1815977158
 Transform:
   m_ObjectHideFlags: 0
@@ -4270,6 +4269,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
+--- !u!114 &1815977160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815977156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2261affe9e477b54087b5340e07ea217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TokenPrefab: {fileID: 3031268966223927751, guid: fb6f134691a0ba447a17a741feef4de3, type: 3}
+--- !u!114 &1815977161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1815977156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585c2554dce8ffc418cb0e7c04a5c407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1881568847
 GameObject:
   m_ObjectHideFlags: 0
